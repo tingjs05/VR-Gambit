@@ -5,12 +5,14 @@ using Patterns.FSM;
 
 namespace Gestures
 {
-    public class TwoFingerState : State<ActionController>
+    public class TwoFingerState : ComboGestureState<ActionController>
     {
-        public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : base(fsm, character)
+        public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
+            base(fsm, character, character.Default, character.WindUp, 
+            () => character.gestureManager.Gestures["Two Finger"], 
+            () => character.gestureManager.Gestures["Wind Up"], 
+            character.defaultTransitionDuration)
         {
-            this.fsm = fsm;
-            this.character = character;
         }
     }
 }
