@@ -2078,7 +2078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 484685120}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 0e1f6d4804a10394bb741ee6e643530f, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 2f50eaa728b6cf443acbfeff12dccd5f, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 457824472}
   m_GesturePerformed:
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 444914737}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 0e1f6d4804a10394bb741ee6e643530f, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 2f50eaa728b6cf443acbfeff12dccd5f, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 457824472}
   m_GesturePerformed:
