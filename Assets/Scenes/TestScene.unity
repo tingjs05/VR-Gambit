@@ -1836,6 +1836,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Release
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -1849,6 +1861,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Release
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -2392,6 +2416,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Two Finger
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -2405,6 +2441,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Two Finger
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -2676,6 +2724,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wind Up
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -2689,6 +2749,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wind Up
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -2840,6 +2912,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Release
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -2853,6 +2937,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Release
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3286,6 +3382,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wind Up
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -3299,6 +3407,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wind Up
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3451,6 +3571,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureActive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Two Finger
+          m_BoolArgument: 1
+        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -3464,6 +3596,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1920391404}
+        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
+        m_MethodName: GestureInactive
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Two Finger
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3731,6 +3875,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1920391402}
+  - component: {fileID: 1920391404}
+  - component: {fileID: 1920391403}
   m_Layer: 0
   m_Name: Gesture Manager
   m_TagString: Untagged
@@ -3755,6 +3901,34 @@ Transform:
   - {fileID: 444914736}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920391403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920391401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8a2ae6e9d34094db80f964a4670de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1920391404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920391401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e86430bc600d54fb3e3ab9ca6cb75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gestureNames:
+  - Two Finger
+  - Wind Up
+  - Release
 --- !u!1 &1956926627
 GameObject:
   m_ObjectHideFlags: 0
