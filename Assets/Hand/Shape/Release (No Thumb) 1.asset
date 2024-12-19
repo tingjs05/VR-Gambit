@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5fb3781030442f2bcc893f0dbffabc5, type: 3}
-  m_Name: Two Finger (No Thumb)
+  m_Name: Release (No Thumb) 1
   m_EditorClassIdentifier: 
   m_FingerShapeConditions:
   - m_FingerID: 3
@@ -36,9 +36,9 @@ MonoBehaviour:
       m_Desired: 0
     - m_ShapeType: 4
       m_UpperTolerance: 0.25
-      m_LowerTolerance: 0
+      m_LowerTolerance: 0.35
       m_Tolerance: 0
-      m_Desired: 0
+      m_Desired: 0.8
   - m_FingerID: 2
     m_Targets:
     - m_ShapeType: 2
