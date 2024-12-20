@@ -11,7 +11,7 @@ namespace Gestures
             base(fsm, character, character.Default, character.WindUp, 
             () => character.gestureManager.Gestures["Two Finger"], 
             () => character.gestureManager.Gestures["Wind Up"], 
-            character.defaultTransitionDuration)
+            character.gestureSettings.default_transition_duration)
         {
         }
     }

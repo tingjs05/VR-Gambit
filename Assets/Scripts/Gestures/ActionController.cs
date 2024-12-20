@@ -8,9 +8,8 @@ namespace Gestures
     public class ActionController : StateMachine<ActionController>
     {
         public GestureManager gestureManager;
-
-        [Header("Settings")]
-        public float defaultTransitionDuration = 0.2f;
+        public GestureSetting gestureSettings;
+        public bool isRightHand = true;
 
         #region States
         public DefaultState Default { get; private set; }

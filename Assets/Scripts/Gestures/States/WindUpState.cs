@@ -11,7 +11,7 @@ namespace Gestures
             base(fsm, character, character.Default, character.Release, 
             () => character.gestureManager.Gestures["Wind Up"], 
             () => character.gestureManager.Gestures["Release"], 
-            character.defaultTransitionDuration)
+            character.gestureSettings.default_transition_duration)
         {
         }
     }

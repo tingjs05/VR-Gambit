@@ -9,8 +9,13 @@ namespace Gestures
     {
         public ReleaseState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, () => character.gestureManager.Gestures["Release"], 
-            character.defaultTransitionDuration)
+            character.gestureSettings.default_transition_duration)
         {
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
         }
     }
 }
