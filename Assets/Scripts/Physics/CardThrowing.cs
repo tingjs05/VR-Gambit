@@ -4,9 +4,10 @@ public class CardThrowing : MonoBehaviour
 {
     // Reference to card prefab
     public GameObject cardPrefab;
+    public float throwScale = 500f;
 
     // Method to throw a card
-    public void ThrowCard(Vector3 outVector, Vector3 handPosition, Quaternion handRotation)
+    public void ThrowCard(Vector3 outVector, Vector3 handPosition, Quaternion handRotation, float throwSpeed)
     {
         if (cardPrefab == null)
         {
@@ -18,7 +19,6 @@ public class CardThrowing : MonoBehaviour
         Rigidbody cardRb = thrownCard.GetComponent<Rigidbody>();
 
         Vector3 forwardDir = handRotation * (Vector3.down + outVector).normalized;
-        float throwForce = 500f;
-        cardRb.AddForce(forwardDir * throwForce);
+        cardRb.AddForce(forwardDir * throwScale * throwSpeed);
     }
 }

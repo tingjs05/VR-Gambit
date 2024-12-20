@@ -20,13 +20,15 @@ namespace Gestures
         {
             base.Enter();
             duration_in_wind_up = 0f;
-            // wind_up_position = character
+            wind_up_position = character.hand_position;
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
             duration_in_wind_up += Time.deltaTime;
+            if (!character.gestureManager.Gestures["Wind Up"]) return;
+            wind_up_position = character.hand_position;
         }
     }
 }

@@ -14,9 +14,12 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
+            // calculate throw speed
+            float throwSpeed = Vector3.Distance(character.hand_position, character.WindUp.wind_up_position) / 
+                character.WindUp.duration_in_wind_up;
             // throw card
             character.cardThrowingManager.ThrowCard((character.isRightHand ? Vector3.right : Vector3.left), 
-                character.hand_position, character.hand_rotation);
+                character.hand_position, character.hand_rotation, throwSpeed);
         }
     }
 }
