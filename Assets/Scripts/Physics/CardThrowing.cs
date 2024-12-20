@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -7,8 +5,7 @@ public class CardThrowing : MonoBehaviour
 {
     // Reference to card prefab
     public GameObject cardPrefab;
-
-
+    
     private InputDevice rightHandDevice;
     private InputDevice leftHandDevice;
 
@@ -55,23 +52,21 @@ public class CardThrowing : MonoBehaviour
     // Method to throw a card
     public void ThrowCard(bool isRightHand = true)
     {
-        if (cardPrefab != null)
-        {
-
-            // Determine which hand to use
-            Vector3 handPosition = isRightHand ? rightHandPosition : leftHandPosition;
-            Quaternion handRotation = isRightHand ? rightHandRotation : leftHandRotation;
-
-            GameObject thrownCard = Instantiate(cardPrefab, handPosition, handRotation);
-            Rigidbody cardRb = thrownCard.GetComponent<Rigidbody>();
-
-            Vector3 forwardDir = handRotation * Vector3.down;
-            float throwForce = 500f;
-            cardRb.AddForce(forwardDir * throwForce);
-        }
-        else
+        if (cardPrefab == null)
         {
             Debug.LogWarning("Card Prefab is not assigned!");
+            return;
         }
+
+        // Determine which hand to use
+        Vector3 handPosition = isRightHand ? rightHandPosition : leftHandPosition;
+        Quaternion handRotation = isRightHand ? rightHandRotation : leftHandRotation;
+
+        GameObject thrownCard = Instantiate(cardPrefab, handPosition, handRotation);
+        Rigidbody cardRb = thrownCard.GetComponent<Rigidbody>();
+
+        Vector3 forwardDir = handRotation * (Vector3.down + (isRightHand ? Vector3.right : Vector3.left)).normalized;
+        float throwForce = 500f;
+        cardRb.AddForce(forwardDir * throwForce);
     }
 }
