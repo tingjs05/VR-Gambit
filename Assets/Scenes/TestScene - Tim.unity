@@ -1671,6 +1671,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37653836}
   m_CullTransparentMesh: 1
+--- !u!1 &190098799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2176075390798225449, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011299768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277880761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,18 +1842,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Release
-          m_BoolArgument: 1
-        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -1863,22 +1857,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Release
-          m_BoolArgument: 0
-        m_CallState: 2
   m_MinimumHoldTime: 0.2
   m_GestureDetectionInterval: 0.1
   m_StaticGestures: []
   m_Highlight: {fileID: 0}
+--- !u!1 &335244786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7990873191231833679, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011299768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &335244791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335244786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &425590099
 GameObject:
   m_ObjectHideFlags: 0
@@ -2416,18 +2448,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Two Finger
-          m_BoolArgument: 1
-        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -2441,18 +2461,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Two Finger
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -2724,18 +2732,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Wind Up
-          m_BoolArgument: 1
-        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -2749,18 +2745,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Wind Up
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -2912,16 +2896,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
+      - m_Target: {fileID: 1920391403}
+        m_TargetAssemblyTypeName: CardThrowing, Assembly-CSharp
+        m_MethodName: ThrowCard
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Release
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
   m_GestureEnded:
@@ -2937,18 +2921,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Release
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3319,6 +3291,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142552574}
   m_CullTransparentMesh: 1
+--- !u!1 &1184281625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616979458509162541, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011299768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1189210690
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,18 +3360,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Wind Up
-          m_BoolArgument: 1
-        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -3407,18 +3373,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Wind Up
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3571,18 +3525,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureActive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Two Finger
-          m_BoolArgument: 1
-        m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
       m_Calls:
@@ -3596,18 +3538,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1920391404}
-        m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
-        m_MethodName: GestureInactive
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Two Finger
           m_BoolArgument: 0
         m_CallState: 2
   m_MinimumHoldTime: 0.2
@@ -3830,111 +3760,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597727880}
   m_CullTransparentMesh: 1
---- !u!1 &1722625789
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1722625793}
-  - component: {fileID: 1722625792}
-  - component: {fileID: 1722625791}
-  - component: {fileID: 1722625790}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1722625790
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722625789}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1722625791
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722625789}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f886a9e9a674856469b235a35bc1c8d5, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1722625792
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722625789}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1722625793
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722625789}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733709023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,7 +3805,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1920391402}
-  - component: {fileID: 1920391404}
   - component: {fileID: 1920391403}
   m_Layer: 0
   m_Name: Gesture Manager
@@ -4015,28 +3839,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920391401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f8a2ae6e9d34094db80f964a4670de3, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d4910004d69fc4c9e274dd566066bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_state_name: None
-  gestureManager: {fileID: 0}
-  defaultTransitionDuration: 0.2
---- !u!114 &1920391404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920391401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e86430bc600d54fb3e3ab9ca6cb75c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gestureNames:
-  - Two Finger
-  - Wind Up
-  - Release
+  leftHandRayOrigin: {fileID: 190098799}
+  rightHandRayOrigin: {fileID: 1184281625}
+  cardPrefab: {fileID: 633182454949970093, guid: 165e496975af5f14d834f0491e7f24f3,
+    type: 3}
 --- !u!1 &1956926627
 GameObject:
   m_ObjectHideFlags: 0
@@ -4192,7 +4001,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7990873191231833679, guid: 5eccbf4be2c00e94689ee8062e4e7276,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 335244791}
   m_SourcePrefab: {fileID: 100100000, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
 --- !u!1 &2049312221
 GameObject:
@@ -4599,4 +4412,3 @@ SceneRoots:
   - {fileID: 1920391402}
   - {fileID: 1733709024}
   - {fileID: 37387984}
-  - {fileID: 1722625793}
