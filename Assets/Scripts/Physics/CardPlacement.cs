@@ -63,7 +63,11 @@ public class CardPlacement : MonoBehaviour
             Quaternion handRotation = isRightHand ? rightHandRotation : leftHandRotation;
 
             GameObject spawnedCard = Instantiate(cardPrefab, handPosition, handRotation);
+            spawnedCard.GetComponent<Rigidbody>().isKinematic = true;
 
+            //CardObject cardObject = spawnedCard.GetComponent<CardObject>();
+
+            //cardObject.HoverCard();
 
         }
         else
