@@ -7,7 +7,7 @@ namespace Gestures
     public class GestureSetting : MonoBehaviour
     {
         #region Inspector Values
-        [SerializeField] float defaultTransitionDuration = 0.2f;
+        [SerializeField] float defaultTransitionDuration = 1.5f;
         #endregion
 
         #region Public Properties

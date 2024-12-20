@@ -65,7 +65,7 @@ public class CardThrowing : MonoBehaviour
         GameObject thrownCard = Instantiate(cardPrefab, handPosition, handRotation);
         Rigidbody cardRb = thrownCard.GetComponent<Rigidbody>();
 
-        Vector3 forwardDir = handRotation * Vector3.down;
+        Vector3 forwardDir = handRotation * (Vector3.down + (isRightHand ? Vector3.right : Vector3.left)).normalized;
         float throwForce = 500f;
         cardRb.AddForce(forwardDir * throwForce);
     }

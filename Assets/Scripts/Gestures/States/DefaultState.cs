@@ -9,5 +9,16 @@ namespace Gestures
             this.fsm = fsm;
             this.character = character;
         }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+
+            if (character.gestureManager.Gestures["Two Finger"])
+            {
+                fsm.SwitchState(character.TwoFinger);
+                return;
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Patterns.FSM;
+using TMPro;
 
 namespace Gestures
 {
@@ -7,6 +8,7 @@ namespace Gestures
     {
         public GestureManager gestureManager;
         public GestureSetting gestureSettings;
+        public TextMeshProUGUI tempText;
         public bool isRightHand = true;
 
         [Header("Action Managers")]
@@ -36,6 +38,7 @@ namespace Gestures
         new void Update()
         {
             base.Update();
+            tempText.text = current_state_name;
         }
     }
 }

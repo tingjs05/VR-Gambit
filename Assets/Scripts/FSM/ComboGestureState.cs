@@ -28,7 +28,7 @@ namespace Patterns.FSM
         public override void Enter()
         {
             base.Enter();
-            if (!currentStateCondition.Invoke()) return;
+            if (currentStateCondition.Invoke()) return;
             fsm.SwitchState(defaultState);
         }
 
@@ -66,6 +66,7 @@ namespace Patterns.FSM
                 if (nextStateCondition.Invoke())
                 {
                     fsm.SwitchState(nextState);
+                    transitionCoroutine = null;
                     break;
                 }
 
@@ -73,8 +74,12 @@ namespace Patterns.FSM
                 yield return null;
             }
 
-            fsm.SwitchState(defaultState);
-            transitionCoroutine = null;
+            // do not reset if coroutine was ended prematurely (transition occured)
+            if (transitionCoroutine != null)
+            {
+                fsm.SwitchState(defaultState);
+                transitionCoroutine = null;
+            }
         }
     }
 }
