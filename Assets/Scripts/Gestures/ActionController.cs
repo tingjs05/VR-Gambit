@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Patterns.FSM;
 
@@ -10,6 +8,9 @@ namespace Gestures
         public GestureManager gestureManager;
         public GestureSetting gestureSettings;
         public bool isRightHand = true;
+
+        [Header("Action Managers")]
+        public CardThrowing cardThrowingManager;
 
         #region States
         public DefaultState Default { get; private set; }

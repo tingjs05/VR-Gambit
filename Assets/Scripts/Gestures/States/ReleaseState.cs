@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Patterns.FSM;
 
 namespace Gestures
@@ -16,6 +13,7 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
+            character.cardThrowingManager.ThrowCard(character.isRightHand);
         }
     }
 }

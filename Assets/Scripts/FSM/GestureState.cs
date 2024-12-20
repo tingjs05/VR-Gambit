@@ -1,6 +1,3 @@
-using System.Collections;
-using UnityEngine;
-
 namespace Patterns.FSM
 {
     public class GestureState<T> : State<T>
