@@ -1,3 +1,4 @@
+using UnityEngine;
 using Patterns.FSM;
 
 namespace Gestures
@@ -13,7 +14,9 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
-            character.cardThrowingManager.ThrowCard(character.isRightHand);
+            // throw card
+            character.cardThrowingManager.ThrowCard((character.isRightHand ? Vector3.right : Vector3.left), 
+                character.hand_position, character.hand_rotation);
         }
     }
 }

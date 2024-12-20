@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.XR;
 using Patterns.FSM;
 using TMPro;
 
@@ -21,6 +22,16 @@ namespace Gestures
         public TwoFingerState TwoFinger { get; private set; }
         #endregion
 
+        #region Hand Management
+        private InputDevice handDevice;
+
+        private Vector3 handPosition;
+        public Vector3 hand_position => handPosition;
+
+        private Quaternion handRotation;
+        public Quaternion hand_rotation => handRotation;
+        #endregion
+
         void Awake()
         {
             Default = new DefaultState(this, this);
@@ -32,13 +43,22 @@ namespace Gestures
 
         void Start()
         {
-            
+            // Get the InputDevice for the specified hand
+            handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
+            // check if hand device is valid
+            if (!handDevice.isValid)
+                Debug.LogWarning((isRightHand ? "Right" : "Left") + " hand device is not valid!");
         }
 
         new void Update()
         {
             base.Update();
             tempText.text = current_state_name;
+
+            // Update hand position and rotation
+            if (!handDevice.isValid) return;
+            handDevice.TryGetFeatureValue(CommonUsages.devicePosition, out handPosition);
+            handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
         }
     }
 }
