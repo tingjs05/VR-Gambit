@@ -6,7 +6,7 @@ namespace Gestures
     {
         public ReleaseState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, () => character.gestureManager.Gestures["Release"], 
-            character.gestureSettings.default_transition_duration)
+            character.gestureSettings.release_transition_duration)
         {
         }
 

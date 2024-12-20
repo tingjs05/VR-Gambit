@@ -4300,6 +4300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTransitionDuration: 1.5
+  releaseTransitionDuration: 2
 --- !u!1 &1925836678
 GameObject:
   m_ObjectHideFlags: 0
