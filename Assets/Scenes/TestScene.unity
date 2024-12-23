@@ -3393,6 +3393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardPrefab: {fileID: 633182454949970093, guid: 165e496975af5f14d834f0491e7f24f3,
     type: 3}
+  throwScale: 1500
 --- !u!1 &1060285036
 GameObject:
   m_ObjectHideFlags: 0
