@@ -5,41 +5,63 @@ using UnityEngine;
 public class CardObject : MonoBehaviour
 {
 
-    public bool IsPlaced { get; private set; } = false;
+    public float launchForce = 500f;
+    private bool isTouchedByPlayer = false;
+    private bool isActive = false;
 
     private Rigidbody rb;
-    private BoxCollider boxCollider;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (isTouchedByPlayer && isActive)
+        {
+            LaunchCard();
+        }
         
     }
 
     public void HoverCard()
     {
+        rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
-        boxCollider.isTrigger = true;
+
+    }
+
+    public void LaunchCard()
+    {
+
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+
+        Vector3 forwardDir = transform.rotation * Vector3.down;
+        rb.AddForce(forwardDir * launchForce);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (CompareTag("Hand"))
+        if (other.CompareTag("Hand"))
         {
-            rb.isKinematic = false;
-            boxCollider.isTrigger = false;
+            isTouchedByPlayer = true;
+        }
+    }
 
-            Vector3 forwardDir = transform.rotation * Vector3.forward;
-            float throwForce = 500f;
-            rb.AddForce(forwardDir * throwForce);
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Hand"))
+        {
+            isTouchedByPlayer = false;
+            isActive = true;
         }
     }
 }
