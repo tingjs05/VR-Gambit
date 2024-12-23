@@ -7,20 +7,17 @@ namespace Patterns.FSM
     {
         protected Condition nextStateCondition;
         protected State<T> nextState;
-        private Coroutine transitionCoroutine;
+        protected Coroutine transitionCoroutine;
+        protected float transitionWindow, transitionDuration;
 
         public ComboGestureState(StateMachine<T> fsm, T character, 
                 State<T> defaultState, State<T> nextState, 
                 Condition currentStateCondition, Condition nextStateCondition, 
                 float transitionWindow) : 
             base(fsm, character, defaultState, 
-                currentStateCondition, transitionWindow)
+                currentStateCondition)
         {
-            this.fsm = fsm;
-            this.character = character;
-            this.defaultState = defaultState;
             this.nextState = nextState;
-            this.currentStateCondition = currentStateCondition;
             this.nextStateCondition = nextStateCondition;
             this.transitionWindow = transitionWindow;
         }
@@ -28,6 +25,7 @@ namespace Patterns.FSM
         public override void Enter()
         {
             base.Enter();
+            transitionDuration = 0f;
             if (currentStateCondition.Invoke()) return;
             fsm.SwitchState(defaultState);
         }
@@ -59,10 +57,12 @@ namespace Patterns.FSM
 
         IEnumerator Transition()
         {
-            float timeElasped = 0f;
+            transitionDuration = 0f;
 
-            while (timeElasped < transitionWindow)
+            while (transitionDuration < transitionWindow)
             {
+                transitionDuration += Time.deltaTime;
+                
                 if (nextStateCondition.Invoke())
                 {
                     fsm.SwitchState(nextState);
@@ -70,7 +70,6 @@ namespace Patterns.FSM
                     break;
                 }
 
-                timeElasped += Time.deltaTime;
                 yield return null;
             }
 

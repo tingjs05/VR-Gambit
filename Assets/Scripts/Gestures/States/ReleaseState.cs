@@ -6,8 +6,7 @@ namespace Gestures
     public class ReleaseState : GestureState<ActionController>
     {
         public ReleaseState(StateMachine<ActionController> fsm, ActionController character) : 
-            base(fsm, character, character.Default, () => character.gestureManager.Gestures["Release"], 
-            character.gestureSettings.release_transition_duration)
+            base(fsm, character, character.Default, () => character.gestureManager.Gestures["Release"])
         {
         }
 
@@ -15,8 +14,8 @@ namespace Gestures
         {
             base.Enter();
             // calculate throw speed
-            float throwSpeed = Vector3.Distance(character.hand_position, character.WindUp.wind_up_position) / 
-                character.WindUp.duration_in_wind_up;
+            float throwSpeed = Vector3.Distance(character.hand_position, character.WindUp.wind_up_position) *
+                character.gestureSettings.release_distance_scale / character.WindUp.duration_in_state;
             // throw card
             character.cardThrowingManager.ThrowCard((character.isRightHand ? Vector3.right : Vector3.left), 
                 character.hand_position, character.hand_rotation, throwSpeed);
