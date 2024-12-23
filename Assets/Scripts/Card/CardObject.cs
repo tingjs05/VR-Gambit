@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CardObject : MonoBehaviour
 {
-
     public float launchForce = 500f;
     private bool isTouchedByPlayer = false;
     private bool isActive = false;

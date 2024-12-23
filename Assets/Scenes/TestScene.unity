@@ -2022,6 +2022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 444914736}
+  - component: {fileID: 444914740}
   - component: {fileID: 444914737}
   - component: {fileID: 444914739}
   - component: {fileID: 444914738}
@@ -2117,6 +2118,27 @@ MonoBehaviour:
   - Release
   - Place
   - Snap
+--- !u!65 &444914740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444914735}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03579242, y: 0.1080609, z: 0.07506192}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &457824470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,6 +2330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 484685119}
+  - component: {fileID: 484685123}
   - component: {fileID: 484685120}
   - component: {fileID: 484685122}
   - component: {fileID: 484685121}
@@ -2403,6 +2426,27 @@ MonoBehaviour:
   - Release
   - Place
   - Snap
+--- !u!65 &484685123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484685118}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03579242, y: 0.1080609, z: 0.07506192}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &503824393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,7 +3618,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007769358}
+  - component: {fileID: 1007769361}
   - component: {fileID: 1007769359}
+  - component: {fileID: 1007769360}
   m_Layer: 0
   m_Name: Action Manager
   m_TagString: Untagged
@@ -3612,6 +3658,34 @@ MonoBehaviour:
   cardPrefab: {fileID: 633182454949970093, guid: 165e496975af5f14d834f0491e7f24f3,
     type: 3}
   throwScale: 3500
+--- !u!114 &1007769360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007769357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f849b8681cfd66f42859f3b871dc3918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
+  leftHandCollider: {fileID: 444914735}
+  rightHandCollider: {fileID: 484685118}
+  maxCards: 5
+--- !u!114 &1007769361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007769357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef702e8ec311b145bcf55da6d193618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1060285036
 GameObject:
   m_ObjectHideFlags: 0
