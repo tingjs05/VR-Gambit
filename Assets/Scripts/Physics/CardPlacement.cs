@@ -8,6 +8,8 @@ public class CardPlacement : MonoBehaviour
     // Reference to card prefab
     public GameObject cardPrefab;
 
+    public GameObject leftHandCollider;
+    public GameObject rightHandCollider;
 
     private InputDevice rightHandDevice;
     private InputDevice leftHandDevice;
@@ -17,6 +19,9 @@ public class CardPlacement : MonoBehaviour
 
     private Vector3 rightHandPosition;
     private Quaternion rightHandRotation;
+
+    private List<GameObject> placedCards = new List<GameObject>();
+    public int maxCards = 5;
 
     void Start()
     {
@@ -42,6 +47,8 @@ public class CardPlacement : MonoBehaviour
         {
             leftHandDevice.TryGetFeatureValue(CommonUsages.devicePosition, out leftHandPosition);
             leftHandDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out leftHandRotation);
+
+            leftHandCollider.transform.SetPositionAndRotation(leftHandPosition, leftHandRotation);
         }
 
         // Update right hand position and rotation
@@ -49,6 +56,8 @@ public class CardPlacement : MonoBehaviour
         {
             rightHandDevice.TryGetFeatureValue(CommonUsages.devicePosition, out rightHandPosition);
             rightHandDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out rightHandRotation);
+
+            rightHandCollider.transform.SetPositionAndRotation(rightHandPosition, rightHandRotation);
         }
     }
 
@@ -58,16 +67,23 @@ public class CardPlacement : MonoBehaviour
         if (cardPrefab != null)
         {
 
-            // Determine which hand to use
+            // determine which hand to use
             Vector3 handPosition = isRightHand ? rightHandPosition : leftHandPosition;
             Quaternion handRotation = isRightHand ? rightHandRotation : leftHandRotation;
 
             GameObject spawnedCard = Instantiate(cardPrefab, handPosition, handRotation);
-            spawnedCard.GetComponent<Rigidbody>().isKinematic = true;
+            spawnedCard.GetComponent<CardObject>().HoverCard();
 
-            //CardObject cardObject = spawnedCard.GetComponent<CardObject>();
+            placedCards.Add(spawnedCard);
 
-            //cardObject.HoverCard();
+            // check if the number of cards exceeds the maximum
+            if (placedCards.Count > maxCards)
+            {
+                // remove and destroy the oldest card
+                GameObject oldestCard = placedCards[0];
+                placedCards.RemoveAt(0);
+                Destroy(oldestCard);
+            }
 
         }
         else
