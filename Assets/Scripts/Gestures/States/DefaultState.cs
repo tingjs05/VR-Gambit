@@ -19,6 +19,12 @@ namespace Gestures
                 fsm.SwitchState(character.TwoFinger);
                 return;
             }
+
+            // if (character.gestureManager.Gestures["Place"])
+            // {
+            //     fsm.SwitchState(character.Place);
+            //     return;
+            // }
         }
     }
 }

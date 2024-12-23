@@ -20,6 +20,8 @@ namespace Gestures
         public ReleaseState Release { get; private set; }
         public WindUpState WindUp { get; private set; }
         public TwoFingerState TwoFinger { get; private set; }
+        public SnapState Snap { get; private set; }
+        public PlaceState Place { get; private set; }
         #endregion
 
         #region Hand Management
@@ -38,6 +40,8 @@ namespace Gestures
             Release = new ReleaseState(this, this);
             WindUp = new WindUpState(this, this);
             TwoFinger = new TwoFingerState(this, this);
+            Snap = new SnapState(this, this);
+            Place = new PlaceState(this, this);
             Initialize(Default);
         }
 
