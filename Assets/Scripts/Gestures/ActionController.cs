@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using Patterns.FSM;
 using TMPro;
+using Card;
 
 namespace Gestures
 {
@@ -14,12 +15,15 @@ namespace Gestures
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
+        public CardPlacement cardPlacementManager;
 
         #region States
         public DefaultState Default { get; private set; }
         public ReleaseState Release { get; private set; }
         public WindUpState WindUp { get; private set; }
         public TwoFingerState TwoFinger { get; private set; }
+        public SnapState Snap { get; private set; }
+        public PlaceState Place { get; private set; }
         #endregion
 
         #region Hand Management
@@ -38,6 +42,8 @@ namespace Gestures
             Release = new ReleaseState(this, this);
             WindUp = new WindUpState(this, this);
             TwoFinger = new TwoFingerState(this, this);
+            Snap = new SnapState(this, this);
+            Place = new PlaceState(this, this);
             Initialize(Default);
         }
 
@@ -59,6 +65,10 @@ namespace Gestures
             if (!handDevice.isValid) return;
             handDevice.TryGetFeatureValue(CommonUsages.devicePosition, out handPosition);
             handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
+
+            transform.position = handPosition;
+            transform.rotation = handRotation;
+
         }
     }
 }
