@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using Patterns.FSM;
 using TMPro;
+using Card;
 
 namespace Gestures
 {
@@ -14,6 +15,7 @@ namespace Gestures
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
+        public CardPlacement cardPlacementManager;
 
         #region States
         public DefaultState Default { get; private set; }
@@ -63,6 +65,10 @@ namespace Gestures
             if (!handDevice.isValid) return;
             handDevice.TryGetFeatureValue(CommonUsages.devicePosition, out handPosition);
             handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
+
+            transform.position = handPosition;
+            transform.rotation = handRotation;
+
         }
     }
 }

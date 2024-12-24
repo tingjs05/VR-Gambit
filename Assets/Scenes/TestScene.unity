@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 444914738}
   m_Layer: 0
   m_Name: Left Hand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2100,6 +2100,7 @@ MonoBehaviour:
   tempText: {fileID: 959332416}
   isRightHand: 0
   cardThrowingManager: {fileID: 1007769359}
+  cardPlacementManager: {fileID: 1007769360}
 --- !u!114 &444914739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2336,7 +2337,7 @@ GameObject:
   - component: {fileID: 484685121}
   m_Layer: 0
   m_Name: Right Hand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2408,6 +2409,7 @@ MonoBehaviour:
   tempText: {fileID: 1132988147}
   isRightHand: 1
   cardThrowingManager: {fileID: 1007769359}
+  cardPlacementManager: {fileID: 1007769360}
 --- !u!114 &484685122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,8 +3657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d4910004d69fc4c9e274dd566066bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 633182454949970093, guid: 165e496975af5f14d834f0491e7f24f3,
-    type: 3}
   throwScale: 3500
 --- !u!114 &1007769360
 MonoBehaviour:
@@ -3670,10 +3670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f849b8681cfd66f42859f3b871dc3918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 0}
-  leftHandCollider: {fileID: 444914735}
-  rightHandCollider: {fileID: 484685118}
-  maxCards: 5
 --- !u!114 &1007769361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3686,6 +3682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef702e8ec311b145bcf55da6d193618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: -5147754063264824058, guid: 43ccc673792243a4d84a817410bd70c3,
+    type: 3}
+  defaultLaunchForce: 500
 --- !u!1 &1060285036
 GameObject:
   m_ObjectHideFlags: 0
