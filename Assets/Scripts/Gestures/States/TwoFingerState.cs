@@ -14,14 +14,14 @@ namespace Gestures
 
         protected override bool CheckTransition()
         {
-            if (nextStateCondition.Invoke())
-            {
-                fsm.SwitchState(nextState);
-                return true;
-            }
-            else if (character.gestureManager.Gestures["Place"])
+            if (character.gestureManager.Gestures["Place"])
             {
                 fsm.SwitchState(character.Place);
+                return true;
+            }
+            else if (nextStateCondition.Invoke())
+            {
+                fsm.SwitchState(nextState);
                 return true;
             }
             
