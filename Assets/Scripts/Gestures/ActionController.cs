@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.XR;
-using Patterns.FSM;
+using UnityEngine.XR.Hands;
+using UnityEngine.XR.Management;
 using TMPro;
+using Patterns.FSM;
 using Card;
 
 namespace Gestures
@@ -12,6 +14,10 @@ namespace Gestures
         public GestureSetting gestureSettings;
         public TextMeshProUGUI tempText;
         public bool isRightHand = true;
+
+        [Header("Finger Card")]
+        public Transform fingerCard;
+        public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -28,6 +34,9 @@ namespace Gestures
 
         #region Hand Management
         private InputDevice handDevice;
+        private XRHandSubsystem handSubsystem;
+        private XRHand hand;
+        private XRHandJoint indexTip, middleTip;
 
         private Vector3 handPosition;
         public Vector3 hand_position => handPosition;
@@ -54,6 +63,12 @@ namespace Gestures
             // check if hand device is valid
             if (!handDevice.isValid)
                 Debug.LogWarning((isRightHand ? "Right" : "Left") + " hand device is not valid!");
+
+            // get hand subsystem
+            handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
+            // get hand
+            if (handSubsystem == null) return;
+            hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
         }
 
         new void Update()
@@ -69,6 +84,23 @@ namespace Gestures
             transform.position = handPosition;
             transform.rotation = handRotation;
 
+            // set finger tip joint
+            indexTip = hand.GetJoint(XRHandJointID.IndexTip);
+            middleTip = hand.GetJoint(XRHandJointID.MiddleTip);
+
+            // set finger card
+            if (fingerCard == null || handSubsystem == null || indexTip == null || middleTip == null || 
+                !indexTip.TryGetPose(out Pose indexTipPose) || !middleTip.TryGetPose(out Pose middleTipPose)) 
+                return;
+
+            fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2, 
+                handRotation * cardRotationOffset);
+        }
+
+        public void SetFingerCard(bool active)
+        {
+            if (fingerCard == null) return;
+            fingerCard.gameObject.SetActive(active);
         }
     }
 }

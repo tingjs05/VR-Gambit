@@ -12,6 +12,12 @@ namespace Gestures
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            character.SetFingerCard(true);
+        }
+
         protected override bool CheckTransition()
         {
             if (character.gestureManager.Gestures["Place"])

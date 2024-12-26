@@ -11,5 +11,11 @@ namespace Gestures
             character.gestureSettings.default_transition_duration)
         {
         }
+
+        public override void Exit()
+        {
+            base.Exit();
+            character.SetFingerCard(false);
+        }
     }
 }

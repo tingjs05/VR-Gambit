@@ -15,7 +15,7 @@ namespace Gestures
             base(fsm, character, character.Default, character.Release, 
             () => character.gestureManager.Gestures["Wind Up"], 
             () => character.gestureManager.Gestures["Release"], 
-            character.gestureSettings.default_transition_duration)
+            character.gestureSettings.wind_up_transition_duration)
         {
         }
 
@@ -54,6 +54,12 @@ namespace Gestures
             windUpReleaseTimer = 0f;
             // reset duration when new position is set
             duration_in_state = 0f;
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            character.SetFingerCard(false);
         }
     }
 }

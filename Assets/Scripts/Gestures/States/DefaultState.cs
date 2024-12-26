@@ -10,6 +10,12 @@ namespace Gestures
             this.character = character;
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            character.SetFingerCard(false);
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
