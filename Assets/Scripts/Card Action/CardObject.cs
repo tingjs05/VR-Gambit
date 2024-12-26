@@ -29,6 +29,13 @@ namespace Card
             rb = GetComponent<Rigidbody>();
         }
 
+        public void ResetCard(Vector3 position, Quaternion rotation)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+            rb.velocity = Vector3.zero;
+        }
+
         public void HoverCard()
         {
             VerifyInitialize();

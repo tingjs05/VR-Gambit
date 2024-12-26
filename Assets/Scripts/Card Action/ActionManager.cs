@@ -25,9 +25,8 @@ namespace Card
             foreach (CardObject card in cardPool)
             {
                 if (card.gameObject.activeSelf) continue;
-                card.transform.position = position;
-                card.transform.rotation = rotation;
                 if (parent != null) card.transform.parent = parent;
+                card.ResetCard(position, rotation);
                 card.gameObject.SetActive(true);
                 return card;
             }
