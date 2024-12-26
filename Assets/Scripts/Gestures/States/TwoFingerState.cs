@@ -7,7 +7,7 @@ namespace Gestures
         public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, character.WindUp, 
             () => character.gestureManager.Gestures["Two Finger"], 
-            () => character.gestureManager.Gestures["Wind Up"], 
+            () => character.gestureManager.Gestures["Wind Up"] || character.gestureManager.Gestures["Place"], 
             character.gestureSettings.default_transition_duration)
         {
         }
@@ -25,7 +25,7 @@ namespace Gestures
                 fsm.SwitchState(character.Place);
                 return true;
             }
-            else if (nextStateCondition.Invoke())
+            else if (character.gestureManager.Gestures["Wind Up"])
             {
                 fsm.SwitchState(nextState);
                 return true;

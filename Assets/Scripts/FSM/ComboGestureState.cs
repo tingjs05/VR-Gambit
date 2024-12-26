@@ -32,7 +32,7 @@ namespace Patterns.FSM
 
         public override void LogicUpdate()
         {
-            if (currentStateCondition.Invoke())
+            if (currentStateCondition.Invoke() && !nextStateCondition.Invoke())
             {
                 CheckTransitionCoroutine();
                 return;
