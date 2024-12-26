@@ -8,7 +8,7 @@ namespace Gestures
             base(fsm, character, character.Default, character.Snap, 
             () => character.gestureManager.Gestures["Place"], 
             () => character.gestureManager.Gestures["Snap"], 
-            character.gestureSettings.default_transition_duration)
+            character.gestureSettings.place_transition_duration)
         {
         }
 
