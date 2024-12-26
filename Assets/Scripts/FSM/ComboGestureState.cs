@@ -48,6 +48,13 @@ namespace Patterns.FSM
             CheckTransitionCoroutine();
         }
 
+        protected virtual bool CheckTransition()
+        {
+            if (!nextStateCondition.Invoke()) return false;
+            fsm.SwitchState(nextState);
+            return true;
+        }
+
         void CheckTransitionCoroutine()
         {
             if (transitionCoroutine == null) return;
@@ -63,9 +70,8 @@ namespace Patterns.FSM
             {
                 transitionDuration += Time.deltaTime;
                 
-                if (nextStateCondition.Invoke())
+                if (CheckTransition())
                 {
-                    fsm.SwitchState(nextState);
                     transitionCoroutine = null;
                     break;
                 }

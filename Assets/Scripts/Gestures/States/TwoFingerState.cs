@@ -11,5 +11,21 @@ namespace Gestures
             character.gestureSettings.default_transition_duration)
         {
         }
+
+        protected override bool CheckTransition()
+        {
+            if (nextStateCondition.Invoke())
+            {
+                fsm.SwitchState(nextState);
+                return true;
+            }
+            else if (character.gestureManager.Gestures["Place"])
+            {
+                fsm.SwitchState(character.Place);
+                return true;
+            }
+            
+            return false;
+        }
     }
 }
