@@ -193,7 +193,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             {
                 m_PerformedTriggered = false;
                 m_GestureEnded?.Invoke();
-                m_Background.color = m_BackgroundDefaultColor;
+                SetBackgroundColor(m_BackgroundDefaultColor);
             }
 
             m_WasDetected = detected;
@@ -205,7 +205,7 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
                 {
                     m_GesturePerformed?.Invoke();
                     m_PerformedTriggered = true;
-                    m_Background.color = m_BackgroundHighlightColor;
+                    SetBackgroundColor(m_BackgroundHighlightColor);
 
                     if (m_Highlight)
                         m_Highlight.enabled = true;
@@ -219,6 +219,12 @@ namespace UnityEngine.XR.Hands.Samples.GestureSample
             }
 
             m_TimeOfLastConditionCheck = Time.timeSinceLevelLoad;
+        }
+
+        void SetBackgroundColor(Color newColor)
+        {
+            if (m_Background == null) return;
+            m_Background.color = newColor;
         }
     }
 }
