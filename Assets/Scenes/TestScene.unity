@@ -2544,7 +2544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureActive
         m_Mode: 5
@@ -2571,7 +2571,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureInactive
         m_Mode: 5
@@ -3293,7 +3293,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureActive
         m_Mode: 5
@@ -3320,7 +3320,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureInactive
         m_Mode: 5
@@ -5874,6 +5874,7 @@ MonoBehaviour:
   windUpTransitionDuration: 0.5
   windUpReleaseWindow: 0.25
   releaseDistanceScale: 0.25
+  cardPlacementOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1925836678
 GameObject:
   m_ObjectHideFlags: 0
