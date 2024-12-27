@@ -17,6 +17,7 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
+        public Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
         public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
         public ParticleSystem glow, fire, charargedFire;
 
@@ -90,9 +91,10 @@ namespace Gestures
             middleTip = hand.GetJoint(XRHandJointID.MiddleTip);
 
             // set finger card
-            if (fingerCard == null || handSubsystem == null || indexTip == null || middleTip == null || 
+            if (fingerCard == null || !fingerCard.gameObject.activeInHierarchy || 
+                handSubsystem == null || indexTip == null || middleTip == null || 
                 !indexTip.TryGetPose(out Pose indexTipPose) || !middleTip.TryGetPose(out Pose middleTipPose)) 
-                return;
+                    return;
 
             fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2, 
                 handRotation * cardRotationOffset);

@@ -1,3 +1,4 @@
+using UnityEngine;
 using Patterns.FSM;
 
 namespace Gestures
@@ -12,10 +13,25 @@ namespace Gestures
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            RotateCard(character.placeCardTilt);
+        }
+
         public override void Exit()
         {
             base.Exit();
+            RotateCard(-character.placeCardTilt);
             character.SetFingerCard(false);
+        }
+
+        void RotateCard(Vector3 eulerRotation)
+        {
+            foreach (Transform child in character.fingerCard)
+            {
+                child.Rotate(eulerRotation.x, eulerRotation.y, eulerRotation.z);
+            }
         }
     }
 }
