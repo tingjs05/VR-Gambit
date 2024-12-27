@@ -17,6 +17,7 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
+        public float offsetFloat = 0.0325f;
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -94,11 +95,25 @@ namespace Gestures
                 !indexIntermediate.TryGetPose(out Pose indexIntermediatePose))
                 return;
 
-            // rotate card based on index finger direction
-            Quaternion cardRotation = Quaternion.LookRotation(indexIntermediatePose.position - indexTipPose.position, handRotation * Vector3.forward);
+            // directional vectors
+            Vector3 indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
 
-            fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2, 
-                cardRotation);
+            float angle = Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized);
+
+            // card offset to reduce hand clipping
+            float offsetStrength = Mathf.Clamp01(1f - angle / 90f);
+
+            Vector3 offsetDir = isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right);
+
+            float offsetMagniture = offsetFloat * offsetStrength;
+
+            Vector3 antiClipOffset = offsetDir * offsetMagniture;
+            
+            // rotate card based on index finger direction
+            Quaternion cardRotation = Quaternion.LookRotation(indexDir, handRotation * Vector3.forward);
+
+
+            fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2 + antiClipOffset, cardRotation);
         }
 
         public void SetFingerCard(bool active)
