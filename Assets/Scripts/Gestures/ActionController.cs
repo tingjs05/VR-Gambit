@@ -17,7 +17,6 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
-        public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -36,7 +35,7 @@ namespace Gestures
         private InputDevice handDevice;
         private XRHandSubsystem handSubsystem;
         private XRHand hand;
-        private XRHandJoint indexTip, middleTip;
+        private XRHandJoint indexTip, indexIntermediate, middleTip;
 
         private Vector3 handPosition;
         public Vector3 hand_position => handPosition;
@@ -86,15 +85,20 @@ namespace Gestures
 
             // set finger tip joint
             indexTip = hand.GetJoint(XRHandJointID.IndexTip);
+            indexIntermediate = hand.GetJoint(XRHandJointID.IndexIntermediate);
             middleTip = hand.GetJoint(XRHandJointID.MiddleTip);
 
             // set finger card
-            if (fingerCard == null || handSubsystem == null || indexTip == null || middleTip == null || 
-                !indexTip.TryGetPose(out Pose indexTipPose) || !middleTip.TryGetPose(out Pose middleTipPose)) 
+            if (fingerCard == null || handSubsystem == null || indexTip == null || middleTip == null ||
+                !indexTip.TryGetPose(out Pose indexTipPose) || !middleTip.TryGetPose(out Pose middleTipPose) ||
+                !indexIntermediate.TryGetPose(out Pose indexIntermediatePose))
                 return;
 
+            // rotate card based on index finger direction
+            Quaternion cardRotation = Quaternion.LookRotation(indexIntermediatePose.position - indexTipPose.position, handRotation * Vector3.forward);
+
             fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2, 
-                handRotation * cardRotationOffset);
+                cardRotation);
         }
 
         public void SetFingerCard(bool active)
