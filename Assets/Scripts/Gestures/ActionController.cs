@@ -48,6 +48,11 @@ namespace Gestures
         public Quaternion hand_rotation => handRotation;
         #endregion
 
+        #region Finger Card
+        private Vector3 indexDir, antiClipOffset;
+        public bool rotateCardToFinger = true;
+        #endregion
+
         void Awake()
         {
             Default = new DefaultState(this, this);
@@ -100,24 +105,16 @@ namespace Gestures
                     return;
 
             // directional vectors
-            Vector3 indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
-
-            float angle = Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized);
-
-            // card offset to reduce hand clipping
-            float offsetStrength = Mathf.Clamp01(1f - angle / 90f);
-
-            Vector3 offsetDir = isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right);
-
-            float offsetMagniture = offsetFloat * offsetStrength;
-
-            Vector3 antiClipOffset = offsetDir * offsetMagniture;
+            indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
+            antiClipOffset = (isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right)) * 
+                (offsetFloat * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
             
             // rotate card based on index finger direction
-            Quaternion cardRotation = Quaternion.LookRotation(indexDir, handRotation * Vector3.forward);
-
-
-            fingerCard.SetPositionAndRotation((indexTipPose.position + middleTipPose.position) / 2 + antiClipOffset, cardRotation);
+            fingerCard.SetPositionAndRotation(
+                (indexTipPose.position + middleTipPose.position) / 2 + 
+                (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
+                rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
+                (handRotation * cardRotationOffset));
         }
 
         public void SetFingerCard(bool active)

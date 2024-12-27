@@ -17,6 +17,7 @@ namespace Gestures
         {
             base.Enter();
             RotateCard(character.placeCardTilt);
+            character.rotateCardToFinger = false;
         }
 
         public override void Exit()
@@ -24,6 +25,7 @@ namespace Gestures
             base.Exit();
             RotateCard(-character.placeCardTilt);
             character.SetFingerCard(false);
+            character.rotateCardToFinger = true;
         }
 
         void RotateCard(Vector3 eulerRotation)

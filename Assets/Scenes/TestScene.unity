@@ -2363,10 +2363,12 @@ MonoBehaviour:
   tempText: {fileID: 959332416}
   isRightHand: 0
   fingerCard: {fileID: 1958177441}
+  placeCardTilt: {x: -80, y: 0, z: 0}
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
   glow: {fileID: 1007487113}
   fire: {fileID: 971896345}
   charargedFire: {fileID: 1073481356}
+  offsetFloat: 0.0325
   cardThrowingManager: {fileID: 1007769359}
   cardPlacementManager: {fileID: 1007769360}
 --- !u!114 &444914739
@@ -2678,10 +2680,12 @@ MonoBehaviour:
   tempText: {fileID: 1132988147}
   isRightHand: 1
   fingerCard: {fileID: 512156663}
+  placeCardTilt: {x: -80, y: 0, z: 0}
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
   glow: {fileID: 1660623219}
   fire: {fileID: 1810337321}
   charargedFire: {fileID: 1038915597}
+  offsetFloat: 0.0325
   cardThrowingManager: {fileID: 1007769359}
   cardPlacementManager: {fileID: 1007769360}
 --- !u!114 &484685122
