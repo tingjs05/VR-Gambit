@@ -2366,6 +2366,8 @@ MonoBehaviour:
   gestureSettings: {fileID: 1920391405}
   tempText: {fileID: 959332416}
   isRightHand: 0
+  fingerCard: {fileID: 0}
+  cardRotationOffset: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   cardThrowingManager: {fileID: 1007769359}
   cardPlacementManager: {fileID: 0}
 --- !u!114 &444914739
@@ -2545,6 +2547,8 @@ MonoBehaviour:
   gestureSettings: {fileID: 1920391405}
   tempText: {fileID: 1132988147}
   isRightHand: 1
+  fingerCard: {fileID: 0}
+  cardRotationOffset: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
   cardThrowingManager: {fileID: 1007769359}
   cardPlacementManager: {fileID: 0}
 --- !u!114 &484685122
@@ -3796,7 +3800,6 @@ GameObject:
   - component: {fileID: 1007769358}
   - component: {fileID: 1007769359}
   - component: {fileID: 1007769360}
-  - component: {fileID: 1007769361}
   m_Layer: 0
   m_Name: Action Manager
   m_TagString: Untagged
@@ -3844,21 +3847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f849b8681cfd66f42859f3b871dc3918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1007769361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007769357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ccd057d43b950499fda2db0e2e798f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rightIndexCollider: {fileID: 758855889}
-  cardPrefab: {fileID: 8350645947206807028, guid: 43ccc673792243a4d84a817410bd70c3,
-    type: 3}
 --- !u!1 &1060285036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,6 +5167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTransitionDuration: 1.5
+  placeTransitionDuration: 0.5
+  windUpTransitionDuration: 0.5
   windUpReleaseWindow: 2
   releaseDistanceScale: 0.15
 --- !u!1 &1925836678

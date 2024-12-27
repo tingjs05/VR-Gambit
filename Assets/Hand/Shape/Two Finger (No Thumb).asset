@@ -17,20 +17,20 @@ MonoBehaviour:
     m_Targets:
     - m_ShapeType: 0
       m_UpperTolerance: 0.25
-      m_LowerTolerance: 0.25
+      m_LowerTolerance: 0.4
       m_Tolerance: 0
       m_Desired: 0.8
   - m_FingerID: 4
     m_Targets:
     - m_ShapeType: 0
       m_UpperTolerance: 0.25
-      m_LowerTolerance: 0.25
+      m_LowerTolerance: 0.4
       m_Tolerance: 0
       m_Desired: 0.8
   - m_FingerID: 1
     m_Targets:
     - m_ShapeType: 2
-      m_UpperTolerance: 0.25
+      m_UpperTolerance: 0.5
       m_LowerTolerance: 0
       m_Tolerance: 0
       m_Desired: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   - m_FingerID: 2
     m_Targets:
     - m_ShapeType: 2
-      m_UpperTolerance: 0.25
+      m_UpperTolerance: 0.5
       m_LowerTolerance: 0
       m_Tolerance: 0
       m_Desired: 0
