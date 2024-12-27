@@ -49,9 +49,9 @@ namespace Gestures
             Default = new DefaultState(this, this);
             Release = new ReleaseState(this, this);
             WindUp = new WindUpState(this, this);
-            TwoFinger = new TwoFingerState(this, this);
             Snap = new SnapState(this, this);
             Place = new PlaceState(this, this);
+            TwoFinger = new TwoFingerState(this, this);
             Initialize(Default);
         }
 

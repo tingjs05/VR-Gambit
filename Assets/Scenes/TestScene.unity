@@ -2526,7 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 444914737}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 8ec1575789e1a204c80a1162b2fcb08e, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: ab429621b93c40d49b373623ac905a10, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 29915162}
   m_GesturePerformed:
@@ -2544,7 +2544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureActive
         m_Mode: 5
@@ -2571,7 +2571,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureInactive
         m_Mode: 5
@@ -2979,7 +2979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 484685120}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 8ec1575789e1a204c80a1162b2fcb08e, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: ab429621b93c40d49b373623ac905a10, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 29915162}
   m_GesturePerformed:
@@ -3275,7 +3275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 444914737}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 182d7ee62364cef4bba62ca579a8976d, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 10c562c3e7dba6b479cdf436f96ae8d8, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 1292051818}
   m_GesturePerformed:
@@ -3293,7 +3293,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureActive
         m_Mode: 5
@@ -3320,7 +3320,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 444914735}
+      - m_Target: {fileID: 444914739}
         m_TargetAssemblyTypeName: Gestures.GestureManager, Assembly-CSharp
         m_MethodName: GestureInactive
         m_Mode: 5
@@ -5694,7 +5694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 484685120}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 182d7ee62364cef4bba62ca579a8976d, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 10c562c3e7dba6b479cdf436f96ae8d8, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 1292051818}
   m_GesturePerformed:
@@ -5870,9 +5870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultTransitionDuration: 0.25
+  placeTransitionDuration: 0.5
   windUpTransitionDuration: 0.5
   windUpReleaseWindow: 0.25
   releaseDistanceScale: 0.25
+  cardPlacementOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1925836678
 GameObject:
   m_ObjectHideFlags: 0
