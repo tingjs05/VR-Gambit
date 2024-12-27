@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4108396497561511170}
   - component: {fileID: 4527665726980502465}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: Charged Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2968498892209013155}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.423, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9118787613600053442}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!198 &4108396497561511170
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4841,8 +4841,6 @@ GameObject:
   - component: {fileID: 9118787613600053442}
   - component: {fileID: 1995431885892715310}
   - component: {fileID: 4721696491684577259}
-  - component: {fileID: 6064995860246788925}
-  - component: {fileID: 6784655461170875944}
   - component: {fileID: 675369884010737139}
   - component: {fileID: 4530768957766208466}
   - component: {fileID: 964687265362855474}
@@ -4863,8 +4861,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.804, y: 3.66, z: 1.28}
-  m_LocalScale: {x: 0.8999088, y: 1.3182, z: 0.054000396}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.083029, y: 0.12162214, z: 0.004982282}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8544508634201666754}
   - {fileID: 5432556846151868221}
@@ -4898,7 +4896,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a31f40534a5ce4544877d15a03fed393, type: 2}
+  - {fileID: 2100000, guid: 27697d542762aba4a8330e9a00e8b346, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4920,54 +4918,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &6064995860246788925
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568590405096735529}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &6784655461170875944
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5568590405096735529}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!96 &675369884010737139
 TrailRenderer:
   serializedVersion: 3
@@ -5020,7 +4970,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.6417904
+        value: 0.08800102
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5029,7 +4979,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.082087934
+        value: 0.040447306
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5070,7 +5020,7 @@ TrailRenderer:
       m_NumColorKeys: 3
       m_NumAlphaKeys: 3
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 90
     alignment: 0
     textureMode: 0
     textureScale: {x: 1, y: 1}
@@ -5098,7 +5048,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5718,9 +5668,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: 0.02, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 0.72, y: 0.2, z: 0}
+    m_Scale: {x: 0.72, y: 0.83, z: 0}
     placementMode: 2
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -6596,7 +6546,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: -0.08
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -9890,7 +9840,7 @@ GameObject:
   - component: {fileID: 8152844531763929726}
   - component: {fileID: 1821315466179706534}
   m_Layer: 0
-  m_Name: Fire (1)
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9906,8 +9856,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.9999129, y: -0, z: -0, w: -0.013198035}
   m_LocalPosition: {x: 0, y: 0.002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9118787613600053442}
   m_LocalEulerAnglesHint: {x: 181.512, y: 0, z: 0}
@@ -9928,7 +9878,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

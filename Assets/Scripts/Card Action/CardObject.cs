@@ -5,6 +5,8 @@ namespace Card
     public class CardObject : MonoBehaviour
     {
         public float maxActiveDuration = 5f;
+        public TrailRenderer trailRenderer;
+        public ParticleSystem glow;
 
         private Rigidbody rb;
         private float defaultLaunchForce = 500f;
@@ -27,6 +29,7 @@ namespace Card
         {
             this.defaultLaunchForce = defaultLaunchForce;
             rb = GetComponent<Rigidbody>();
+            trailRenderer.enabled = false;
         }
 
         public void ResetCard(Vector3 position, Quaternion rotation)
@@ -34,19 +37,24 @@ namespace Card
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
+            trailRenderer.enabled = false;
         }
 
         public void HoverCard()
         {
             VerifyInitialize();
+            glow.Play();
             isActive = false;
             rb.isKinematic = true;
+            trailRenderer.enabled = false;
         }
 
         public void LaunchCard(Vector3 forwardDir, float launchForce)
         {
             VerifyInitialize();
             isActive = true;
+            glow.Stop();
+            trailRenderer.enabled = true;
             rb.isKinematic = false;
             rb.AddForce(transform.rotation * forwardDir * launchForce);
         }

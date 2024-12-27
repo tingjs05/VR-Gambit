@@ -16,6 +16,8 @@ namespace Gestures
         {
             base.Enter();
             character.SetFingerCard(true);
+            character.glow.Play();
+            character.fire.Play();
         }
 
         protected override bool CheckTransition()

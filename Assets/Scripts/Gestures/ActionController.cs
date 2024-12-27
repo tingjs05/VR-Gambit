@@ -18,6 +18,7 @@ namespace Gestures
         [Header("Finger Card")]
         public Transform fingerCard;
         public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
+        public ParticleSystem glow, fire, charargedFire;
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
