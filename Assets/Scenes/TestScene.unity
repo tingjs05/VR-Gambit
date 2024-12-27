@@ -4025,6 +4025,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f849b8681cfd66f42859f3b871dc3918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatSpeed: 5
+  positionReachedThreshold: 0.01
 --- !u!114 &1007769361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5874,7 +5876,7 @@ MonoBehaviour:
   windUpTransitionDuration: 0.5
   windUpReleaseWindow: 0.25
   releaseDistanceScale: 0.25
-  cardPlacementOffset: {x: 0, y: 0, z: 0}
+  cardPlacementOffset: {x: 0.1, y: 0.1, z: 0}
 --- !u!1 &1925836678
 GameObject:
   m_ObjectHideFlags: 0
