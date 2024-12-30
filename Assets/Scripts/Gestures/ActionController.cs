@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
@@ -20,6 +21,8 @@ namespace Gestures
         public ParticleSystem glow, fire, charargedFire;
 
         [Header("Card Charging")]
+        public Transform sliderObject;
+        public Slider sliderUI;
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -50,6 +53,10 @@ namespace Gestures
         #region Finger Card
         private Vector3 indexDir, antiClipOffset;
         public bool rotateCardToFinger = true;
+        #endregion
+
+        #region Card Charging
+        private Vector3 sliderUIOffset;
         #endregion
 
         void Awake()
@@ -91,6 +98,29 @@ namespace Gestures
             transform.position = handPosition;
             transform.rotation = handRotation;
 
+            // move objects according to hand position and rotation
+            MoveChargeUI();
+            MoveFingerCard();
+        }
+
+        void MoveChargeUI()
+        {
+            if (!sliderObject.gameObject.activeInHierarchy) return;
+            // set offset, reverse x-axis if it is the left hand (mirror)
+            sliderUIOffset = gestureSettings.slider_ui_offset;
+            // reverse right and left hand
+            if (!isRightHand) sliderUIOffset.z *= -1f;
+            // set position of slider UI object based on offset
+            sliderObject.position = handPosition + 
+                (transform.forward * sliderUIOffset.x) + 
+                (transform.right * sliderUIOffset.z) + 
+                (transform.up * sliderUIOffset.y);
+            // set rotation of slier object
+            sliderObject.rotation = Camera.main.transform.rotation;
+        }
+
+        void MoveFingerCard()
+        {
             // set finger tip joint
             indexTip = hand.GetJoint(XRHandJointID.IndexTip);
             indexIntermediate = hand.GetJoint(XRHandJointID.IndexIntermediate);

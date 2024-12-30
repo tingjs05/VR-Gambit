@@ -22,7 +22,9 @@ namespace Gestures
         [SerializeField] Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
         [SerializeField] float offsetFloat = 0.0325f;
 
-        // [Header("Card Charging")]
+        [Header("Card Charging")]
+        [SerializeField] Vector3 sliderUIOffset = new Vector3(-0.08f, 0f, 0f);
+        [SerializeField] float cardChargeDuration = 5f;
         #endregion
 
         #region Public Properties
@@ -42,6 +44,10 @@ namespace Gestures
         public Vector3 place_card_tilt => placeCardTilt;
         public Quaternion card_rotation_offset => cardRotationOffset;
         public float offset_float => offsetFloat;
+
+        // card charging
+        public Vector3 slider_ui_offset => sliderUIOffset;
+        public float card_charge_duration => cardChargeDuration;
         #endregion
     }
 }
