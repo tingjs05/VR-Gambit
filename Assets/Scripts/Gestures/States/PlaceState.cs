@@ -20,8 +20,6 @@ namespace Gestures
             character.rotateCardToFinger = false;
             // reset charged card (can't charge card to place)
             character.sliderObject.gameObject.SetActive(false);
-            if (!character.chargedFire.isPlaying) return;
-            character.chargedFire.Stop();
         }
 
         public override void Exit()

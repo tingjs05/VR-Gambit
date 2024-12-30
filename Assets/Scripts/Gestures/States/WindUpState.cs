@@ -61,8 +61,6 @@ namespace Gestures
             base.Exit();
             character.fingerCard.gameObject.SetActive(false);
             character.sliderObject.gameObject.SetActive(false);
-            if (!character.chargedFire.isPlaying) return;
-            character.chargedFire.Stop();
         }
     }
 }

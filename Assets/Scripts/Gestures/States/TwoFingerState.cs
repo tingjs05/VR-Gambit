@@ -40,6 +40,8 @@ namespace Gestures
             base.Exit();
             if (ChargedShot) return;
             character.sliderObject.gameObject.SetActive(false);
+            if (!character.chargedFire.isPlaying) return;
+            character.chargedFire.Stop();
         }
 
         protected override bool CheckTransition()
