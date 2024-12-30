@@ -16,14 +16,14 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
-            RotateCard(character.placeCardTilt);
+            RotateCard(character.gestureSettings.place_card_tilt);
             character.rotateCardToFinger = false;
         }
 
         public override void Exit()
         {
             base.Exit();
-            RotateCard(-character.placeCardTilt);
+            RotateCard(-character.gestureSettings.place_card_tilt);
             character.SetFingerCard(false);
             character.rotateCardToFinger = true;
         }

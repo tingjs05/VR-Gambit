@@ -17,10 +17,9 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
-        public Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
-        public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
         public ParticleSystem glow, fire, charargedFire;
-        public float offsetFloat = 0.0325f;
+
+        [Header("Card Charging")]
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -107,14 +106,14 @@ namespace Gestures
             // directional vectors
             indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
             antiClipOffset = (isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right)) * 
-                (offsetFloat * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
+                (gestureSettings.offset_float * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
             
             // rotate card based on index finger direction
             fingerCard.SetPositionAndRotation(
                 (indexTipPose.position + middleTipPose.position) / 2 + 
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
-                (handRotation * cardRotationOffset));
+                (handRotation * gestureSettings.card_rotation_offset));
         }
 
         public void SetFingerCard(bool active)
