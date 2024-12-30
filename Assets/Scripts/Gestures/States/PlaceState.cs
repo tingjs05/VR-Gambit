@@ -18,13 +18,17 @@ namespace Gestures
             base.Enter();
             RotateCard(character.gestureSettings.place_card_tilt);
             character.rotateCardToFinger = false;
+            // reset charged card (can't charge card to place)
+            character.sliderObject.gameObject.SetActive(false);
+            if (!character.chargedFire.isPlaying) return;
+            character.chargedFire.Stop();
         }
 
         public override void Exit()
         {
             base.Exit();
             RotateCard(-character.gestureSettings.place_card_tilt);
-            character.SetFingerCard(false);
+            character.fingerCard.gameObject.SetActive(false);
             character.rotateCardToFinger = true;
         }
 

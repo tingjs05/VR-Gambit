@@ -2365,7 +2365,7 @@ MonoBehaviour:
   fingerCard: {fileID: 1958177441}
   glow: {fileID: 1007487113}
   fire: {fileID: 971896345}
-  charargedFire: {fileID: 1073481356}
+  chargedFire: {fileID: 1073481356}
   sliderObject: {fileID: 1351985639}
   sliderUI: {fileID: 800908098}
   cardThrowingManager: {fileID: 1007769359}
@@ -2682,7 +2682,7 @@ MonoBehaviour:
   fingerCard: {fileID: 512156663}
   glow: {fileID: 1660623219}
   fire: {fileID: 1810337321}
-  charargedFire: {fileID: 1038915597}
+  chargedFire: {fileID: 1038915597}
   sliderObject: {fileID: 2141462426}
   sliderUI: {fileID: 1791865349}
   cardThrowingManager: {fileID: 1007769359}
@@ -3232,7 +3232,7 @@ PrefabInstance:
     - target: {fileID: 3228104541710099892, guid: 43ccc673792243a4d84a817410bd70c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5431460324735454538, guid: 43ccc673792243a4d84a817410bd70c3,
         type: 3}
@@ -7010,7 +7010,7 @@ PrefabInstance:
     - target: {fileID: 3228104541710099892, guid: 43ccc673792243a4d84a817410bd70c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5431460324735454538, guid: 43ccc673792243a4d84a817410bd70c3,
         type: 3}

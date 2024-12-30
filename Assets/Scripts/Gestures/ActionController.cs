@@ -18,7 +18,7 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
-        public ParticleSystem glow, fire, charargedFire;
+        public ParticleSystem glow, fire, chargedFire;
 
         [Header("Card Charging")]
         public Transform sliderObject;
@@ -72,6 +72,11 @@ namespace Gestures
 
         void Start()
         {
+            // reset card charging
+            sliderUI.maxValue = gestureSettings.card_charge_duration;
+            sliderObject.gameObject.SetActive(false);
+            chargedFire.Stop();
+
             // Get the InputDevice for the specified hand
             handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
             // check if hand device is valid
@@ -134,7 +139,7 @@ namespace Gestures
                     return;
 
             // directional vectors
-            indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
+            indexDir = (indexTipPose.position - indexIntermediatePose.position).normalized;
             antiClipOffset = (isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right)) * 
                 (gestureSettings.offset_float * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
             
@@ -144,12 +149,6 @@ namespace Gestures
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
                 (handRotation * gestureSettings.card_rotation_offset));
-        }
-
-        public void SetFingerCard(bool active)
-        {
-            if (fingerCard == null) return;
-            fingerCard.gameObject.SetActive(active);
         }
     }
 }
