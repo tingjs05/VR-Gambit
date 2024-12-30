@@ -38,10 +38,12 @@ namespace Gestures
         public override void Exit()
         {
             base.Exit();
+            
+            if (character.chargedFire.isPlaying)
+                character.chargedFire.Stop();
+            
             if (ChargedShot) return;
             character.sliderObject.gameObject.SetActive(false);
-            if (!character.chargedFire.isPlaying) return;
-            character.chargedFire.Stop();
         }
 
         protected override bool CheckTransition()
