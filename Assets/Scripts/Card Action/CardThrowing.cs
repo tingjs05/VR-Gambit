@@ -7,10 +7,10 @@ namespace Card
         public float throwScale = 500f;
 
         // Method to throw a card
-        public void ThrowCard(Vector3 outVector, Vector3 handPosition, Quaternion handRotation, float throwSpeed, bool charged)
+        public void ThrowCard(Vector3 outVector, Vector3 handPosition, Quaternion handRotation, float throwSpeed, bool charged, bool hand)
         {
             CardObject card = ActionManager.Instance.InstantiateCard(handPosition, handRotation);
-            card.LaunchCard((Vector3.down + outVector).normalized, throwScale * throwSpeed);
+            card.LaunchCard((Vector3.down + outVector).normalized, throwScale * throwSpeed, hand);
             if (!charged) return;
             card.canSteer = true;
         }
