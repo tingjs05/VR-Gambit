@@ -77,7 +77,8 @@ namespace Card
             glow.Stop();
             trailRenderer.enabled = true;
             rb.isKinematic = false;
-            rb.AddForce(transform.rotation * forwardDir * launchForce);
+            transform.forward = transform.rotation * forwardDir;
+            rb.AddForce(transform.forward * launchForce);
             if (fromRightHand == null) return;
             steeringController.SetHand((bool) fromRightHand);
         }
