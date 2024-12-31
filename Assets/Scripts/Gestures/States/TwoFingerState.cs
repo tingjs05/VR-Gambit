@@ -21,7 +21,7 @@ namespace Gestures
             character.fingerCard.gameObject.SetActive(true);
             character.glow.Play();
             character.fire.Play();
-            character.chargedFire.Stop();
+            character.ToggleChargedParticles(false);
             // show UI to indicate charge
             character.sliderObject.gameObject.SetActive(true);
             character.sliderUI.value = 0f;
@@ -32,7 +32,7 @@ namespace Gestures
             base.LogicUpdate();
             character.sliderUI.value += Time.deltaTime;
             if (!ChargedShot || character.chargedFire.isPlaying) return;
-            character.chargedFire.Play();
+            character.ToggleChargedParticles(true);
         }
 
         public override void Exit()
@@ -40,7 +40,7 @@ namespace Gestures
             base.Exit();
             
             if (character.chargedFire.isPlaying)
-                character.chargedFire.Stop();
+                character.ToggleChargedParticles(false);
             
             if (ChargedShot) return;
             character.sliderObject.gameObject.SetActive(false);

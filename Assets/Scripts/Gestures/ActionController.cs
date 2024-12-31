@@ -18,7 +18,7 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
-        public ParticleSystem glow, fire, chargedFire;
+        public ParticleSystem glow, fire, chargedFire, lightning;
 
         [Header("Card Charging")]
         public Transform sliderObject;
@@ -75,7 +75,7 @@ namespace Gestures
             // reset card charging
             sliderUI.maxValue = gestureSettings.card_charge_duration;
             sliderObject.gameObject.SetActive(false);
-            chargedFire.Stop();
+            ToggleChargedParticles(false);
 
             // Get the InputDevice for the specified hand
             handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
@@ -149,6 +149,19 @@ namespace Gestures
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
                 (handRotation * gestureSettings.card_rotation_offset));
+        }
+
+        public void ToggleChargedParticles(bool play)
+        {
+            if (play)
+            {
+                chargedFire.Play();
+                lightning.Play();
+                return;
+            }
+
+            chargedFire.Stop();
+            lightning.Stop();
         }
     }
 }
