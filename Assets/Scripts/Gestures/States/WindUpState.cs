@@ -59,7 +59,7 @@ namespace Gestures
         public override void Exit()
         {
             base.Exit();
-            character.fingerCard.gameObject.SetActive(false);
+            character.ToggleFingerCard(false);
             character.sliderObject.gameObject.SetActive(false);
         }
     }

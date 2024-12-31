@@ -18,7 +18,7 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
-            character.fingerCard.gameObject.SetActive(true);
+            character.ToggleFingerCard(true);
             character.glow.Play();
             character.fire.Play();
             character.ToggleChargedParticles(false);

@@ -163,5 +163,11 @@ namespace Gestures
             chargedFire.Stop();
             lightning.Stop();
         }
+
+        public void ToggleFingerCard(bool active)
+        {
+            if (fingerCard == null) return;
+            fingerCard.gameObject.SetActive(active);
+        }
     }
 }

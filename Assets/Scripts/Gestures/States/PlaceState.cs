@@ -26,7 +26,7 @@ namespace Gestures
         {
             base.Exit();
             RotateCard(-character.gestureSettings.place_card_tilt);
-            character.fingerCard.gameObject.SetActive(false);
+            character.ToggleFingerCard(false);
             character.rotateCardToFinger = true;
         }
 
