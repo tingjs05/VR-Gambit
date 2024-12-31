@@ -48,7 +48,6 @@ namespace Card
 
         public void HoverCard()
         {
-            VerifyInitialize();
             glow.Play();
             isActive = false;
             rb.isKinematic = true;
@@ -57,7 +56,6 @@ namespace Card
 
         public void LaunchCard(Vector3 forwardDir, float launchForce)
         {
-            VerifyInitialize();
             activeDuration = 0f;
             isActive = true;
             glow.Stop();
@@ -72,12 +70,6 @@ namespace Card
             activeDuration += Time.deltaTime;
             if (activeDuration <= maxActiveDuration) return;
             gameObject.SetActive(false);
-        }
-
-        private void VerifyInitialize()
-        {
-            if (rb != null) return;
-            rb = GetComponent<Rigidbody>();
         }
 
         private void OnTriggerEnter(Collider other)
