@@ -42,7 +42,6 @@ namespace Gestures
             if (character.chargedFire.isPlaying)
                 character.ToggleChargedParticles(false);
             
-            if (ChargedShot) return;
             character.sliderObject.gameObject.SetActive(false);
         }
 

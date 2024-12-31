@@ -30,6 +30,9 @@ namespace Gestures
             maxDist = 0f;
             windUpReleaseTimer = 0f;
             duration_in_state = 0f;
+            // show slider if charged
+            if (!character.TwoFinger.ChargedShot) return;
+            character.sliderObject.gameObject.SetActive(true);
         }
 
         public override void LogicUpdate()
