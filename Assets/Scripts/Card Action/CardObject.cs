@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Card
 {
+    [RequireComponent(typeof(Rigidbody), typeof(CardSteering))]
     public class CardObject : MonoBehaviour
     {
         public float maxActiveDuration = 5f;
@@ -25,11 +26,15 @@ namespace Card
             }
         }
 
+        public CardSteering steeringController { get; private set; }
+
         public void Initialize(float defaultLaunchForce)
         {
             this.defaultLaunchForce = defaultLaunchForce;
-            rb = GetComponent<Rigidbody>();
             trailRenderer.enabled = false;
+            rb = GetComponent<Rigidbody>();
+            steeringController = GetComponent<CardSteering>();
+            steeringController.enabled = false;
         }
 
         public void ResetCard(Vector3 position, Quaternion rotation)
@@ -38,6 +43,7 @@ namespace Card
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
             trailRenderer.enabled = false;
+            steeringController.enabled = false;
         }
 
         public void HoverCard()
@@ -52,6 +58,7 @@ namespace Card
         public void LaunchCard(Vector3 forwardDir, float launchForce)
         {
             VerifyInitialize();
+            activeDuration = 0f;
             isActive = true;
             glow.Stop();
             trailRenderer.enabled = true;
