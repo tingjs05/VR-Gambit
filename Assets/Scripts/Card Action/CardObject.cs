@@ -6,12 +6,15 @@ namespace Card
     public class CardObject : MonoBehaviour
     {
         public float maxActiveDuration = 5f;
+        public float maxSteerDuration = 5f;
         public TrailRenderer trailRenderer;
         public ParticleSystem glow;
 
         private Rigidbody rb;
+        private CardSteering steeringController;
         private float defaultLaunchForce = 500f;
         private float activeDuration = 0f;
+        private float steerDuration = 0f;
 
         private bool is_active = false;
         public bool isActive
@@ -26,7 +29,19 @@ namespace Card
             }
         }
 
-        public CardSteering steeringController { get; private set; }
+        private bool can_steer = false;
+        public bool canSteer
+        {
+            get { return can_steer; }
+
+            set
+            {
+                can_steer = value;
+                steeringController.enabled = value;
+                if (!can_steer) return;
+                steerDuration = 0f;
+            }
+        }
 
         public void Initialize(float defaultLaunchForce)
         {
@@ -34,7 +49,7 @@ namespace Card
             trailRenderer.enabled = false;
             rb = GetComponent<Rigidbody>();
             steeringController = GetComponent<CardSteering>();
-            steeringController.enabled = false;
+            canSteer = false;
         }
 
         public void ResetCard(Vector3 position, Quaternion rotation)
@@ -43,7 +58,7 @@ namespace Card
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
             trailRenderer.enabled = false;
-            steeringController.enabled = false;
+            canSteer = false;
         }
 
         public void HoverCard()
@@ -56,7 +71,6 @@ namespace Card
 
         public void LaunchCard(Vector3 forwardDir, float launchForce)
         {
-            activeDuration = 0f;
             isActive = true;
             glow.Stop();
             trailRenderer.enabled = true;
@@ -67,9 +81,18 @@ namespace Card
         private void Update()
         {
             if (!isActive) return;
+            HandleSteering();
             activeDuration += Time.deltaTime;
             if (activeDuration <= maxActiveDuration) return;
             gameObject.SetActive(false);
+        }
+
+        private void HandleSteering()
+        {
+            if (!canSteer) return;
+            steerDuration += Time.deltaTime;
+            if (steerDuration <= maxSteerDuration) return;
+            canSteer = false;
         }
 
         private void OnTriggerEnter(Collider other)
