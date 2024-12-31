@@ -47,6 +47,7 @@ namespace Card
         {
             this.defaultLaunchForce = defaultLaunchForce;
             trailRenderer.enabled = false;
+            glow.Stop();
             rb = GetComponent<Rigidbody>();
             steeringController = GetComponent<CardSteering>();
             canSteer = false;
@@ -54,6 +55,7 @@ namespace Card
 
         public void ResetCard(Vector3 position, Quaternion rotation)
         {
+            glow.Stop();
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
