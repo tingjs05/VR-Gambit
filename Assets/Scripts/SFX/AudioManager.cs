@@ -5,16 +5,16 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
 
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
 
     public AudioSource sfxSource;
+
 
     private void Awake()
     {
         if (instance != null) return;
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySFX(AudioClip sfxClip)
@@ -22,6 +22,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(sfxClip);
     }
 
-
+    public void PlayVariedSFX(AudioClip sfxClip)
+    {
+        sfxSource.volume = Random.Range(0.95f, 1.0f);
+        sfxSource.pitch = Random.Range(0.8f, 1.0f);
+        sfxSource.PlayOneShot(sfxClip);
+    }
 
 }
