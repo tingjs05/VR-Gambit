@@ -28,6 +28,9 @@ namespace Gestures
         public CardThrowing cardThrowingManager;
         public CardPlacement cardPlacementManager;
 
+        [Header("Card SFX")]
+        public CardSFX cardSFX;
+
         #region States
         public DefaultState Default { get; private set; }
         public ReleaseState Release { get; private set; }

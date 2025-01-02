@@ -16,6 +16,8 @@ namespace Card
         private float activeDuration = 0f;
         private float steerDuration = 0f;
 
+        private CardSFX sfx;
+
         private bool is_active = false;
         public bool isActive
         {
@@ -49,6 +51,7 @@ namespace Card
             trailRenderer.enabled = false;
             glow.Stop();
             rb = GetComponent<Rigidbody>();
+            sfx = GetComponent<CardSFX>();
             steeringController = GetComponent<CardSteering>();
             canSteer = false;
         }
@@ -109,6 +112,7 @@ namespace Card
             }
 
             if (!isActive || !other.CompareTag("Hand")) return;
+            AudioManager.instance.PlaySFX(sfx.cardLaunch);
             LaunchCard(Vector3.down, defaultLaunchForce);
         }
 
