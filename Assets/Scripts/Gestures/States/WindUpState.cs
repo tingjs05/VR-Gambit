@@ -30,6 +30,9 @@ namespace Gestures
             maxDist = 0f;
             windUpReleaseTimer = 0f;
             duration_in_state = 0f;
+            // show slider if charged
+            if (!character.TwoFinger.ChargedShot) return;
+            character.sliderObject.gameObject.SetActive(true);
         }
 
         public override void LogicUpdate()
@@ -59,7 +62,8 @@ namespace Gestures
         public override void Exit()
         {
             base.Exit();
-            character.SetFingerCard(false);
+            character.ToggleFingerCard(false);
+            character.sliderObject.gameObject.SetActive(false);
         }
     }
 }

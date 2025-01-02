@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
@@ -17,10 +18,11 @@ namespace Gestures
 
         [Header("Finger Card")]
         public Transform fingerCard;
-        public Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
-        public Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
-        public ParticleSystem glow, fire, charargedFire;
-        public float offsetFloat = 0.0325f;
+        public ParticleSystem glow, fire, chargedFire, lightning;
+
+        [Header("Card Charging")]
+        public Transform sliderObject;
+        public Slider sliderUI;
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -53,6 +55,10 @@ namespace Gestures
         public bool rotateCardToFinger = true;
         #endregion
 
+        #region Card Charging
+        private Vector3 sliderUIOffset;
+        #endregion
+
         void Awake()
         {
             Default = new DefaultState(this, this);
@@ -66,6 +72,11 @@ namespace Gestures
 
         void Start()
         {
+            // reset card charging
+            sliderUI.maxValue = gestureSettings.card_charge_duration;
+            sliderObject.gameObject.SetActive(false);
+            ToggleChargedParticles(false);
+
             // Get the InputDevice for the specified hand
             handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
             // check if hand device is valid
@@ -92,6 +103,29 @@ namespace Gestures
             transform.position = handPosition;
             transform.rotation = handRotation;
 
+            // move objects according to hand position and rotation
+            MoveChargeUI();
+            MoveFingerCard();
+        }
+
+        void MoveChargeUI()
+        {
+            if (!sliderObject.gameObject.activeInHierarchy) return;
+            // set offset, reverse x-axis if it is the left hand (mirror)
+            sliderUIOffset = gestureSettings.slider_ui_offset;
+            // reverse right and left hand
+            if (!isRightHand) sliderUIOffset.z *= -1f;
+            // set position of slider UI object based on offset
+            sliderObject.position = handPosition + 
+                (transform.forward * sliderUIOffset.x) + 
+                (transform.right * sliderUIOffset.z) + 
+                (transform.up * sliderUIOffset.y);
+            // set rotation of slier object
+            sliderObject.rotation = Camera.main.transform.rotation;
+        }
+
+        void MoveFingerCard()
+        {
             // set finger tip joint
             indexTip = hand.GetJoint(XRHandJointID.IndexTip);
             indexIntermediate = hand.GetJoint(XRHandJointID.IndexIntermediate);
@@ -105,19 +139,32 @@ namespace Gestures
                     return;
 
             // directional vectors
-            indexDir = (indexIntermediatePose.position - indexTipPose.position).normalized;
+            indexDir = (indexTipPose.position - indexIntermediatePose.position).normalized;
             antiClipOffset = (isRightHand ? (handRotation * Vector3.left) : (handRotation * Vector3.right)) * 
-                (offsetFloat * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
+                (gestureSettings.offset_float * Mathf.Clamp01(1f - Vector3.Angle(indexDir, (handRotation * Vector3.down).normalized) / 90f));
             
             // rotate card based on index finger direction
             fingerCard.SetPositionAndRotation(
                 (indexTipPose.position + middleTipPose.position) / 2 + 
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
-                (handRotation * cardRotationOffset));
+                (handRotation * gestureSettings.card_rotation_offset));
         }
 
-        public void SetFingerCard(bool active)
+        public void ToggleChargedParticles(bool play)
+        {
+            if (play)
+            {
+                chargedFire.Play();
+                lightning.Play();
+                return;
+            }
+
+            chargedFire.Stop();
+            lightning.Stop();
+        }
+
+        public void ToggleFingerCard(bool active)
         {
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);

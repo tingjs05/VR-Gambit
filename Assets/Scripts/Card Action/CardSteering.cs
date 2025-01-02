@@ -1,84 +1,62 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
 
-public class CardSteering : MonoBehaviour
+namespace Card
 {
-
-    private InputDevice handDevice;
-    private XRHandSubsystem handSubsystem;
-    private XRHand hand;
-    private XRHandJoint indexTip, indexIntermediate;
-
-    private Rigidbody rb;
-
-    public float steerStrength = 1.5f;
-    public float maxSteerAngle = 60f;
-
-    public float maxVelocity = 10f;
-
-    private Quaternion handRotation;
-
-    private Vector3 indexDir;
-
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class CardSteering : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
+        public float steerStrength = 1.5f;
+        public float maxSteerAngle = 60f;
+        public float maxVelocity = 10f;
 
-        // Get the InputDevice for the specified hand
-        handDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        // check if hand device is valid
-        if (!handDevice.isValid)
-            Debug.LogWarning("Right hand device is not valid!");
+        private InputDevice handDevice;
+        private XRHandSubsystem handSubsystem;
+        private XRHand hand;
+        private XRHandJoint indexTip, indexIntermediate;
+        private Rigidbody rb;
+        private Quaternion handRotation;
+        private Vector3 indexDir, steerDir;
 
-        // get hand subsystem
-        handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
-        // get hand
-        if (handSubsystem == null) return;
+        void Update()
+        {
+            if (handDevice == null || !handDevice.isValid) return;
+            // set finger tip joint
+            indexTip = hand.GetJoint(XRHandJointID.IndexTip);
+            indexIntermediate = hand.GetJoint(XRHandJointID.IndexIntermediate);
+            handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
+            if (!indexTip.TryGetPose(out Pose indexTipPose) || !indexIntermediate.TryGetPose(out Pose indexIntermediatePose)) return;
+            indexDir = (indexTipPose.position - indexIntermediatePose.position).normalized;
+            SteerCard(indexDir, handRotation);
+        }
 
-        hand = handSubsystem.rightHand;
-    }
+        public void SetHand(bool isRightHand)
+        {
+            // Get the InputDevice for the specified hand
+            handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
+            // check if hand device is valid
+            if (!handDevice.isValid) Debug.LogWarning((isRightHand ? "Right" : "Left") + " hand device is not valid!");
+            // get hand subsystem
+            if (handSubsystem == null) handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
+            if (handSubsystem == null) return;
+            // get hand
+            hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        if (!handDevice.isValid) return;
-
-        // set finger tip joint
-        indexTip = hand.GetJoint(XRHandJointID.IndexTip);
-        indexIntermediate = hand.GetJoint(XRHandJointID.IndexIntermediate);
-
-        handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
-
-        if (!indexTip.TryGetPose(out Pose indexTipPose) || !indexIntermediate.TryGetPose(out Pose indexIntermediatePose)) return;
-
-        indexDir = (indexTipPose.position - indexIntermediatePose.position).normalized;
-
-        SteerCard(indexDir, handRotation);
-
-    }
-
-
-    public void SteerCard(Vector3 indexDir, Quaternion handRotation)
-    {
-        if (rb == null) return;
-
-        rb.useGravity = false;
-
-        Vector3 steerDir = Vector3.RotateTowards(rb.transform.forward, indexDir, Mathf.Deg2Rad * maxSteerAngle, 0f);
-
-        rb.AddForce(steerDir.normalized * steerStrength, ForceMode.Acceleration);
-
-        rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(steerDir, handRotation * Vector3.forward), Time.deltaTime * steerStrength));
-
-        if (rb.velocity.magnitude > maxVelocity) rb.velocity = rb.velocity.normalized * maxVelocity;
-
+        public void SteerCard(Vector3 indexDir, Quaternion handRotation)
+        {
+            // ensure rb is set
+            if (rb == null) rb = GetComponent<Rigidbody>();
+            if (rb == null) return;
+            // steer card
+            rb.useGravity = false;
+            steerDir = Vector3.RotateTowards(rb.transform.forward, indexDir, Mathf.Deg2Rad * maxSteerAngle, 0f);
+            rb.AddForce(steerDir.normalized * steerStrength, ForceMode.Acceleration);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(steerDir, handRotation * Vector3.forward), Time.deltaTime * steerStrength));
+            if (rb.velocity.magnitude <= maxVelocity) return; 
+            rb.velocity = rb.velocity.normalized * maxVelocity;
+        }
     }
 }
