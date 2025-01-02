@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxActiveDuration: 15
+  maxSteerDuration: 5
   trailRenderer: {fileID: 910246838123235812}
   glow: {fileID: 4259907878857699269}
 --- !u!114 &4469172465678736442
@@ -112,9 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd9d2a531a45dc41aca02be1f6899dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steerStrength: 1.5
+  steerStrength: 3
   maxSteerAngle: 60
-  maxVelocity: 10
+  maxVelocity: 25
 --- !u!1001 &431991495582999575
 PrefabInstance:
   m_ObjectHideFlags: 0
