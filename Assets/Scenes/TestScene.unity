@@ -6683,7 +6683,7 @@ MonoBehaviour:
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
   offsetFloat: 0.0325
   sliderUIOffset: {x: -0.08, y: -0.03, z: -0.01}
-  cardChargeDuration: 5
+  cardChargeDuration: 2.5
 --- !u!1 &1925836678
 GameObject:
   m_ObjectHideFlags: 0
