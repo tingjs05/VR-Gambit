@@ -18,7 +18,7 @@ namespace Gestures
                 character.gestureSettings.release_distance_scale / character.WindUp.duration_in_state;
             // throw card
             character.cardThrowingManager.ThrowCard((character.isRightHand ? Vector3.right : Vector3.left), 
-                character.hand_position, character.hand_rotation, throwSpeed);
+                character.hand_position, character.hand_rotation, throwSpeed, character.TwoFinger.ChargedShot, character.isRightHand);
         }
     }
 }
