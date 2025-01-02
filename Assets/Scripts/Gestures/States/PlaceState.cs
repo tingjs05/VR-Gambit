@@ -16,17 +16,15 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
-            RotateCard(character.gestureSettings.place_card_tilt);
+            RotateCard(character.placeCardTilt);
             character.rotateCardToFinger = false;
-            // reset charged card (can't charge card to place)
-            character.sliderObject.gameObject.SetActive(false);
         }
 
         public override void Exit()
         {
             base.Exit();
-            RotateCard(-character.gestureSettings.place_card_tilt);
-            character.ToggleFingerCard(false);
+            RotateCard(-character.placeCardTilt);
+            character.SetFingerCard(false);
             character.rotateCardToFinger = true;
         }
 

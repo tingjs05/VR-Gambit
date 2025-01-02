@@ -13,7 +13,7 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
-            character.ToggleFingerCard(false);
+            character.SetFingerCard(false);
         }
 
         public override void LogicUpdate()

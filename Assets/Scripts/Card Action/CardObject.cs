@@ -2,19 +2,15 @@ using UnityEngine;
 
 namespace Card
 {
-    [RequireComponent(typeof(Rigidbody), typeof(CardSteering))]
     public class CardObject : MonoBehaviour
     {
         public float maxActiveDuration = 5f;
-        public float maxSteerDuration = 5f;
         public TrailRenderer trailRenderer;
         public ParticleSystem glow;
 
         private Rigidbody rb;
-        private CardSteering steeringController;
         private float defaultLaunchForce = 500f;
         private float activeDuration = 0f;
-        private float steerDuration = 0f;
 
         private bool is_active = false;
         public bool isActive
@@ -29,75 +25,52 @@ namespace Card
             }
         }
 
-        private bool can_steer = false;
-        public bool canSteer
-        {
-            get { return can_steer; }
-
-            set
-            {
-                can_steer = value;
-                steeringController.enabled = value;
-                if (!can_steer) return;
-                steerDuration = 0f;
-            }
-        }
-
         public void Initialize(float defaultLaunchForce)
         {
             this.defaultLaunchForce = defaultLaunchForce;
-            trailRenderer.enabled = false;
-            glow.Stop();
             rb = GetComponent<Rigidbody>();
-            steeringController = GetComponent<CardSteering>();
-            canSteer = false;
+            trailRenderer.enabled = false;
         }
 
         public void ResetCard(Vector3 position, Quaternion rotation)
         {
-            glow.Stop();
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
             trailRenderer.enabled = false;
-            canSteer = false;
         }
 
         public void HoverCard()
         {
+            VerifyInitialize();
             glow.Play();
             isActive = false;
             rb.isKinematic = true;
             trailRenderer.enabled = false;
         }
 
-        public void LaunchCard(Vector3 forwardDir, float launchForce, bool? fromRightHand = null)
+        public void LaunchCard(Vector3 forwardDir, float launchForce)
         {
+            VerifyInitialize();
             isActive = true;
             glow.Stop();
             trailRenderer.enabled = true;
             rb.isKinematic = false;
-            transform.forward = transform.rotation * forwardDir;
-            rb.AddForce(transform.forward * launchForce);
-            if (fromRightHand == null) return;
-            steeringController.SetHand((bool) fromRightHand);
+            rb.AddForce(transform.rotation * forwardDir * launchForce);
         }
 
         private void Update()
         {
             if (!isActive) return;
-            HandleSteering();
             activeDuration += Time.deltaTime;
             if (activeDuration <= maxActiveDuration) return;
             gameObject.SetActive(false);
         }
 
-        private void HandleSteering()
+        private void VerifyInitialize()
         {
-            if (!canSteer) return;
-            steerDuration += Time.deltaTime;
-            if (steerDuration <= maxSteerDuration) return;
-            canSteer = false;
+            if (rb != null) return;
+            rb = GetComponent<Rigidbody>();
         }
 
         private void OnTriggerEnter(Collider other)

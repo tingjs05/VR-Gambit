@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1085253300802848068}
   - component: {fileID: 5431460324735454538}
   - component: {fileID: -5147754063264824058}
-  - component: {fileID: 4469172465678736442}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -100,21 +99,6 @@ MonoBehaviour:
   maxActiveDuration: 15
   trailRenderer: {fileID: 910246838123235812}
   glow: {fileID: 4259907878857699269}
---- !u!114 &4469172465678736442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8350645947206807028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd9d2a531a45dc41aca02be1f6899dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  steerStrength: 1.5
-  maxSteerAngle: 60
-  maxVelocity: 10
 --- !u!1001 &431991495582999575
 PrefabInstance:
   m_ObjectHideFlags: 0
