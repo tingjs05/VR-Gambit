@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource sfxSource;
 
+    public CardSFX cardSFX;
 
     private void Awake()
     {
@@ -28,5 +29,9 @@ public class AudioManager : MonoBehaviour
         sfxSource.pitch = Random.Range(0.8f, 1.0f);
         sfxSource.PlayOneShot(sfxClip);
     }
-
+    
+    public void CutSFX()
+    {
+        sfxSource.Stop();
+    }
 }
