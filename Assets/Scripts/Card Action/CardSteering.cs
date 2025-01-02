@@ -51,7 +51,6 @@ namespace Card
             if (rb == null) rb = GetComponent<Rigidbody>();
             if (rb == null) return;
             // steer card
-            rb.useGravity = false;
             steerDir = Vector3.RotateTowards(rb.transform.forward, indexDir, Mathf.Deg2Rad * maxSteerAngle, 0f);
             rb.AddForce(steerDir.normalized * steerStrength, ForceMode.Acceleration);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, Quaternion.LookRotation(steerDir, handRotation * Vector3.forward), Time.deltaTime * steerStrength));

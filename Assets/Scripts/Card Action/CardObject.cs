@@ -74,14 +74,15 @@ namespace Card
             trailRenderer.enabled = false;
         }
 
-        public void LaunchCard(Vector3 forwardDir, float launchForce, bool? fromRightHand = null)
+        public void LaunchCard(Vector3 forwardDir, float launchForce, bool useGravity = true, bool? fromRightHand = null)
         {
             launched = true;
             isActive = true;
+            transform.forward = transform.rotation * forwardDir;
             glow.Stop();
             trailRenderer.enabled = true;
             rb.isKinematic = false;
-            transform.forward = transform.rotation * forwardDir;
+            rb.useGravity = useGravity;
             rb.AddForce(transform.forward * launchForce);
             if (fromRightHand == null) return;
             steeringController.SetHand((bool) fromRightHand);
