@@ -15,6 +15,7 @@ namespace Card
         private float defaultLaunchForce = 500f;
         private float activeDuration = 0f;
         private float steerDuration = 0f;
+        private bool launched = false;
 
         private bool is_active = false;
         public bool isActive
@@ -51,6 +52,7 @@ namespace Card
             rb = GetComponent<Rigidbody>();
             steeringController = GetComponent<CardSteering>();
             canSteer = false;
+            launched = false;
         }
 
         public void ResetCard(Vector3 position, Quaternion rotation)
@@ -61,6 +63,7 @@ namespace Card
             rb.velocity = Vector3.zero;
             trailRenderer.enabled = false;
             canSteer = false;
+            launched = false;
         }
 
         public void HoverCard()
@@ -73,6 +76,7 @@ namespace Card
 
         public void LaunchCard(Vector3 forwardDir, float launchForce, bool? fromRightHand = null)
         {
+            launched = true;
             isActive = true;
             glow.Stop();
             trailRenderer.enabled = true;
@@ -109,13 +113,13 @@ namespace Card
                 return;
             }
 
-            if (!isActive || !other.CompareTag("Hand")) return;
+            if (launched || !isActive || !other.CompareTag("Hand")) return;
             LaunchCard(Vector3.down, defaultLaunchForce);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.CompareTag("Hand")) return;
+            if (launched || !other.CompareTag("Hand")) return;
             isActive = true;
         }
     }
