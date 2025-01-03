@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Card
@@ -9,6 +10,10 @@ namespace Card
         public float maxSteerDuration = 5f;
         public TrailRenderer trailRenderer;
         public ParticleSystem glow;
+
+        [Header("Animation")]
+        public float touchCardLaunchDelay = 0.5f;
+        public Animator anim;
 
         private Rigidbody rb;
         private CardSteering steeringController;
@@ -49,6 +54,7 @@ namespace Card
             this.defaultLaunchForce = defaultLaunchForce;
             trailRenderer.enabled = false;
             glow.Stop();
+            anim.Play("Default");
             rb = GetComponent<Rigidbody>();
             steeringController = GetComponent<CardSteering>();
             canSteer = false;
@@ -58,6 +64,7 @@ namespace Card
         public void ResetCard(Vector3 position, Quaternion rotation)
         {
             glow.Stop();
+            anim.Play("Default");
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
@@ -78,14 +85,25 @@ namespace Card
         {
             launched = true;
             isActive = true;
+            // rotate card to face direction
             transform.forward = transform.rotation * forwardDir;
             glow.Stop();
             trailRenderer.enabled = true;
             rb.isKinematic = false;
             rb.useGravity = useGravity;
+            // add force to launch card
             rb.AddForce(transform.forward * launchForce);
-            if (fromRightHand == null) return;
+            // check if card is being thrown from hand
+            if (fromRightHand == null)
+            {
+                // play default animation if card is not being thrown
+                anim.Play("Default");
+                return;
+            }
+            // set hand for steering card
             steeringController.SetHand((bool) fromRightHand);
+            // play animation
+            anim.Play((bool) fromRightHand ? "Spin" : "Spin (Reverse)");
         }
 
         private void Update()
@@ -115,13 +133,22 @@ namespace Card
             }
 
             if (launched || !isActive || !other.CompareTag("Hand")) return;
-            LaunchCard(Vector3.down, defaultLaunchForce);
+            // delay launch to play animation
+            isActive = false;
+            anim.Play("Transition");
+            StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, Vector3.down, defaultLaunchForce));
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (launched || !other.CompareTag("Hand")) return;
             isActive = true;
+        }
+
+        private IEnumerator DelayedLaunchCard(float duration, Vector3 direction, float force)
+        {
+            yield return new WaitForSeconds(duration);
+            LaunchCard(direction, force);
         }
     }
 }
