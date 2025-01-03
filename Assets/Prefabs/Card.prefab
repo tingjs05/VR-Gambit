@@ -101,7 +101,7 @@ MonoBehaviour:
   maxSteerDuration: 5
   trailRenderer: {fileID: 7434227520700999738}
   glow: {fileID: 4259907878857699269}
-  touchCardLaunchDelay: 0.5
+  touchCardLaunchDelay: 0.75
   anim: {fileID: 1771281335034771410}
 --- !u!114 &4469172465678736442
 MonoBehaviour:
