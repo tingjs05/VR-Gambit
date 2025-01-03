@@ -5,7 +5,7 @@ namespace Gestures
 {
     public class TwoFingerState : ComboGestureState<ActionController>
     {
-        public bool ChargedShot => character.sliderUI.value >= character.gestureSettings.card_charge_duration;
+        public bool ChargedShot => character.sliderUI.value >= 1f;
 
         public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, character.WindUp, 
@@ -23,14 +23,14 @@ namespace Gestures
             character.fire.Play();
             character.ToggleChargedParticles(false);
             // show UI to indicate charge
-            character.sliderObject.gameObject.SetActive(true);
+            character.sliderUI.gameObject.SetActive(true);
             character.sliderUI.value = 0f;
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            character.sliderUI.value += Time.deltaTime;
+            character.sliderUI.value = (character.sliderUI.maxValue * character.sliderUI.value) + Time.deltaTime;
             if (!ChargedShot || character.chargedFire.isPlaying) return;
             character.ToggleChargedParticles(true);
         }
@@ -42,7 +42,7 @@ namespace Gestures
             if (character.chargedFire.isPlaying)
                 character.ToggleChargedParticles(false);
             
-            character.sliderObject.gameObject.SetActive(false);
+            character.sliderUI.gameObject.SetActive(false);
         }
 
         protected override bool CheckTransition()

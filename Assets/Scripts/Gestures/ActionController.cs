@@ -6,6 +6,7 @@ using UnityEngine.XR.Management;
 using TMPro;
 using Patterns.FSM;
 using Card;
+using UI;
 
 namespace Gestures
 {
@@ -19,10 +20,7 @@ namespace Gestures
         [Header("Finger Card")]
         public Transform fingerCard;
         public ParticleSystem glow, fire, chargedFire, lightning;
-
-        [Header("Card Charging")]
-        public Transform sliderObject;
-        public Slider sliderUI;
+        public BoxSlider sliderUI;
 
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
@@ -74,7 +72,6 @@ namespace Gestures
         {
             // reset card charging
             sliderUI.maxValue = gestureSettings.card_charge_duration;
-            sliderObject.gameObject.SetActive(false);
             ToggleChargedParticles(false);
 
             // Get the InputDevice for the specified hand
@@ -104,24 +101,7 @@ namespace Gestures
             transform.rotation = handRotation;
 
             // move objects according to hand position and rotation
-            MoveChargeUI();
             MoveFingerCard();
-        }
-
-        void MoveChargeUI()
-        {
-            if (!sliderObject.gameObject.activeInHierarchy) return;
-            // set offset, reverse x-axis if it is the left hand (mirror)
-            sliderUIOffset = gestureSettings.slider_ui_offset;
-            // reverse right and left hand
-            if (!isRightHand) sliderUIOffset.z *= -1f;
-            // set position of slider UI object based on offset
-            sliderObject.position = handPosition + 
-                (transform.forward * sliderUIOffset.x) + 
-                (transform.right * sliderUIOffset.z) + 
-                (transform.up * sliderUIOffset.y);
-            // set rotation of slier object
-            sliderObject.rotation = Camera.main.transform.rotation;
         }
 
         void MoveFingerCard()

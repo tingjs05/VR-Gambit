@@ -32,7 +32,7 @@ namespace Gestures
             duration_in_state = 0f;
             // show slider if charged
             if (!character.TwoFinger.ChargedShot) return;
-            character.sliderObject.gameObject.SetActive(true);
+            character.sliderUI.gameObject.SetActive(true);
         }
 
         public override void LogicUpdate()
@@ -63,7 +63,7 @@ namespace Gestures
         {
             base.Exit();
             character.ToggleFingerCard(false);
-            character.sliderObject.gameObject.SetActive(false);
+            character.sliderUI.gameObject.SetActive(false);
         }
     }
 }

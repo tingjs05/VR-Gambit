@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3679282239813713789
 Transform:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7029992666345434113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e92ec0a061e0c004397cdca89b2f58e6, type: 3}
   m_Name: 
@@ -203,6 +203,7 @@ MonoBehaviour:
   maxSteerDuration: 5
   trailRenderer: {fileID: 7434227520700999738}
   glow: {fileID: 4259907878857699269}
+  chargedGlow: {fileID: 7029992666345434113}
   touchCardLaunchDelay: 0.75
   anim: {fileID: 1771281335034771410}
 --- !u!114 &4469172465678736442

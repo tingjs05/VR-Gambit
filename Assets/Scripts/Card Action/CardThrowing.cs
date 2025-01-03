@@ -11,6 +11,7 @@ namespace Card
         {
             CardObject card = ActionManager.Instance.InstantiateCard(handPosition, handRotation);
             card.LaunchCard((Vector3.down + outVector).normalized, throwScale * throwSpeed, !charged, hand);
+            card.chargedGlow.SetActive(charged);
             if (!charged) return;
             card.canSteer = true;
         }

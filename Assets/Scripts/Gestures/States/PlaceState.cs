@@ -19,7 +19,7 @@ namespace Gestures
             RotateCard(character.gestureSettings.place_card_tilt);
             character.rotateCardToFinger = false;
             // reset charged card (can't charge card to place)
-            character.sliderObject.gameObject.SetActive(false);
+            character.sliderUI.gameObject.SetActive(false);
         }
 
         public override void Exit()

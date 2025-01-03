@@ -10,6 +10,7 @@ namespace Card
         public float maxSteerDuration = 5f;
         public TrailRenderer trailRenderer;
         public ParticleSystem glow;
+        public GameObject chargedGlow;
 
         [Header("Animation")]
         public float touchCardLaunchDelay = 0.5f;
