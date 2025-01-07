@@ -155,6 +155,7 @@ namespace Gestures
         {
             if (play)
             {
+                AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardCharge);
                 chargedFire.Play();
                 lightning.Play();
                 return;

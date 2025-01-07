@@ -33,8 +33,7 @@ namespace Gestures
             base.LogicUpdate();
             character.sliderUI.value += Time.deltaTime;
             if (!ChargedShot || character.chargedFire.isPlaying) return;
-            AudioManager.instance.CutSFX();
-            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardCharge);
+            if (character.sliderUI.value > 0f) AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardCharge);
             character.ToggleChargedParticles(true);
         }
 

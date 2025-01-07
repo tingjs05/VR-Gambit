@@ -115,6 +115,7 @@ namespace Card
             }
 
             if (launched || !isActive || !other.CompareTag("Hand")) return;
+            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardLaunch);
             LaunchCard(Vector3.down, defaultLaunchForce);
         }
 
