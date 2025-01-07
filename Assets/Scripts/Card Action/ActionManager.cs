@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Card
@@ -6,11 +7,13 @@ namespace Card
     public class ActionManager : MonoBehaviour
     {
         public CardObject cardPrefab;
+        public ParticleSystem cardHitParticle;
         public float defaultLaunchForce = 500f;
 
         public static ActionManager Instance { get; private set; }
 
         private List<CardObject> cardPool = new List<CardObject>();
+        private List<ParticleSystem> hitParticlePool = new List<ParticleSystem>();
 
         void Awake()
         {
@@ -36,6 +39,22 @@ namespace Card
             cardPool.Add(obj.GetComponent<CardObject>());
             cardPool[^1].Initialize(defaultLaunchForce);
             return cardPool[^1];
+        }
+
+        public void SpawnHitParticle(Vector3 position)
+        {
+            foreach (ParticleSystem particleSystem in hitParticlePool)
+            {
+                if (particleSystem.isPlaying) continue;
+                particleSystem.transform.position = position;
+                particleSystem.Play();
+                return;
+            }
+
+            GameObject obj = Instantiate(cardHitParticle.gameObject);
+            hitParticlePool.Add(obj.GetComponent<ParticleSystem>());
+            hitParticlePool[^1].transform.position = position;
+            hitParticlePool[^1].Play();
         }
     }
 }

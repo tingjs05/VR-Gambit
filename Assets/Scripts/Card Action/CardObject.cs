@@ -130,6 +130,7 @@ namespace Card
             if (other.CompareTag("Target"))
             {
                 gameObject.SetActive(false);
+                ActionManager.Instance.SpawnHitParticle(other.transform.position);
                 return;
             }
 
