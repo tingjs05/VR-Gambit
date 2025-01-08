@@ -72,22 +72,17 @@ namespace Gestures
             // check if hand device is valid
             if (!handDevice.isValid)
                 Debug.LogWarning((isRightHand ? "Right" : "Left") + " hand device is not valid!");
+
+            // get hand subsystem
+            handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
+            // get hand
+            if (handSubsystem == null) return;
+            hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
         }
 
         new void Update()
         {
             base.Update();
-
-            // check hand devices
-            if (handDevice == null)
-                // Get the InputDevice for the specified hand
-                handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
-            if (handSubsystem == null)
-                // get hand subsystem
-                handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
-            // get hand
-            if (handSubsystem != null && hand == null)
-                hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
 
             // Update hand position and rotation
             if (!handDevice.isValid) return;
