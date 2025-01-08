@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
@@ -14,7 +13,6 @@ namespace Gestures
     {
         public GestureManager gestureManager;
         public GestureSetting gestureSettings;
-        public TextMeshProUGUI tempText;
         public bool isRightHand = true;
 
         [Header("Finger Card")]
@@ -84,7 +82,6 @@ namespace Gestures
         new void Update()
         {
             base.Update();
-            tempText.text = current_state_name;
 
             // check hand devices
             if (handDevice == null)
