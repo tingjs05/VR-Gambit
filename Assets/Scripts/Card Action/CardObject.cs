@@ -130,6 +130,8 @@ namespace Card
             if (other.CompareTag("Target"))
             {
                 gameObject.SetActive(false);
+                ActionManager.Instance.SpawnHitParticle(other.transform.position);
+                if (other.TryGetComponent<IDamagable>(out IDamagable damagable)) damagable.Damage();
                 return;
             }
 
@@ -138,6 +140,9 @@ namespace Card
             isActive = false;
             anim.Play("Transition");
             StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, Vector3.down, defaultLaunchForce));
+
+            // play sound effect
+            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardHover_Launch);
         }
 
         private void OnTriggerExit(Collider other)

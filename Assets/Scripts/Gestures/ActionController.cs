@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
@@ -14,7 +13,6 @@ namespace Gestures
     {
         public GestureManager gestureManager;
         public GestureSetting gestureSettings;
-        public TextMeshProUGUI tempText;
         public bool isRightHand = true;
 
         [Header("Finger Card")]
@@ -79,18 +77,22 @@ namespace Gestures
             // check if hand device is valid
             if (!handDevice.isValid)
                 Debug.LogWarning((isRightHand ? "Right" : "Left") + " hand device is not valid!");
-
-            // get hand subsystem
-            handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
-            // get hand
-            if (handSubsystem == null) return;
-            hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
         }
 
         new void Update()
         {
             base.Update();
-            tempText.text = current_state_name;
+
+            // check hand devices
+            if (handDevice == null)
+                // Get the InputDevice for the specified hand
+                handDevice = InputDevices.GetDeviceAtXRNode(isRightHand ? XRNode.RightHand : XRNode.LeftHand);
+            if (handSubsystem == null)
+                // get hand subsystem
+                handSubsystem = XRGeneralSettings.Instance.Manager.activeLoader.GetLoadedSubsystem<XRHandSubsystem>();
+            // get hand
+            if (handSubsystem != null && hand == null)
+                hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
 
             // Update hand position and rotation
             if (!handDevice.isValid) return;
@@ -148,6 +150,7 @@ namespace Gestures
         {
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);
+            AudioManager.instance.PlaySFX(active ? AudioManager.instance.cardSFX.cardIdle_HoldCard : AudioManager.instance.cardSFX.cardIdle_ReleaseCard);
         }
     }
 }
