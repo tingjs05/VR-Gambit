@@ -347,6 +347,11 @@ PrefabInstance:
       propertyPath: m_MaxParticleSize
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 2968498892209013155, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568590405096735529, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: m_Name
@@ -355,7 +360,7 @@ PrefabInstance:
     - target: {fileID: 5828129476744832778, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8152844531763929726, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
