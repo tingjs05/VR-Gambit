@@ -19,7 +19,6 @@ namespace Gestures
         {
             base.Enter();
             character.ToggleFingerCard(true);
-            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardHold);
             character.glow.Play();
             character.fire.Play();
             character.ToggleChargedParticles(false);
@@ -33,7 +32,6 @@ namespace Gestures
             base.LogicUpdate();
             character.sliderUI.value += Time.deltaTime;
             if (!ChargedShot || character.chargedFire.isPlaying) return;
-            if (character.sliderUI.value > 0f) AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardCharge);
             character.ToggleChargedParticles(true);
         }
 

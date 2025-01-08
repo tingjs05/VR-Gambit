@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -11,11 +12,15 @@ public class AudioManager : MonoBehaviour
 
     public CardSFX cardSFX;
 
+    private float originalVolume;
+
     private void Awake()
     {
         if (instance != null) return;
 
         instance = this;
+
+        originalVolume = this.sfxSource.volume;
     }
 
     public void PlaySFX(AudioClip sfxClip)
@@ -35,5 +40,14 @@ public class AudioManager : MonoBehaviour
     public void CutSFX()
     {
         sfxSource.Stop();
+    }
+
+    public void PlayChargingSFX(float sliderValue)
+    {
+        sfxSource.PlayOneShot(cardSFX.cardIdle_Charging);
+        if (sfxSource.isPlaying) sfxSource.volume = Mathf.Clamp01(sliderValue);
+        else sfxSource.volume = originalVolume;
+
+
     }
 }
