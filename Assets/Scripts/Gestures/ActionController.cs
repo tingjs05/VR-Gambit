@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
-using TMPro;
 using Patterns.FSM;
 using Card;
 using UI;
@@ -49,10 +48,6 @@ namespace Gestures
         #region Finger Card
         private Vector3 indexDir, antiClipOffset;
         public bool rotateCardToFinger = true;
-        #endregion
-
-        #region Card Charging
-        private Vector3 sliderUIOffset;
         #endregion
 
         void Awake()
@@ -150,6 +145,7 @@ namespace Gestures
         {
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);
+            if (AudioManager.Instance == null) return;
             AudioManager.Instance.PlaySFX(active ? 
                 AudioManager.Instance.cardSFX.cardIdle_HoldCard : 
                 AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, 
