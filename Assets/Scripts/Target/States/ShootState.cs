@@ -5,6 +5,7 @@ namespace Target
 {
     public class ShootState : State<TargetController>
     {
+        Vector3 directionToTarget;
         float cooldownCounter;
 
         public ShootState(StateMachine<TargetController> fsm, TargetController character) : base(fsm, character)
@@ -21,6 +22,13 @@ namespace Target
 
         public override void LogicUpdate()
         {
+            directionToTarget = Camera.main.transform.position - character.transform.position;
+            directionToTarget.y = 0f;
+            directionToTarget.Normalize();
+
+            if (Vector3.Dot(character.transform.forward, directionToTarget) < character.rotationThreshold)
+                character.transform.forward = Vector3.Lerp(character.transform.forward, directionToTarget, Time.deltaTime * character.rotationScale);
+
             cooldownCounter += Time.deltaTime;
             if (cooldownCounter <= character.shootCooldown) return;
 

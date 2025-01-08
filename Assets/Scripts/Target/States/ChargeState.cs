@@ -24,7 +24,8 @@ namespace Target
             directionToTarget.Normalize();
 
             // check if exceeded time in state
-            if (timeInState >= character.maxMoveDuration)
+            if (Vector3.Distance(Camera.main.transform.position, character.transform.position) < character.minDistanceFromTarget || 
+                timeInState >= character.maxMoveDuration)
             {
                 fsm.SwitchState(character.Shoot);
                 return;
@@ -41,7 +42,7 @@ namespace Target
             }
             
             // walk forward
-            character.rb.velocity = character.transform.forward * character.movementSpeed;
+            character.rb.AddForce(character.transform.forward * character.movementSpeed * Time.deltaTime, ForceMode.VelocityChange);
         }
     }
 }

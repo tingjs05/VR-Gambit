@@ -18,12 +18,14 @@ namespace Target
         void Update()
         {
             timeElasped += Time.deltaTime;
-            if (timeElasped <= maxActiveDuration) return;
-            gameObject.SetActive(false);
+
+            if (rb.velocity == Vector3.zero || timeElasped > maxActiveDuration)
+                gameObject.SetActive(false);
         }
 
         void OnTriggerEnter(Collider other)
         {
+            if (other.CompareTag("Target")) return;
             gameObject.SetActive(false);
             if (!other.TryGetComponent<IDamagable>(out IDamagable damagable)) return;
             damagable.Damage();
@@ -40,6 +42,7 @@ namespace Target
 
         public void Shoot()
         {
+            if (rb == null) Start();
             rb.AddForce(transform.forward * shootForce);
         }
     }
