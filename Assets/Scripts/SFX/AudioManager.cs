@@ -42,12 +42,21 @@ public class AudioManager : MonoBehaviour
         sfxSource.Stop();
     }
 
-    public void PlayChargingSFX(float sliderValue)
+    public void PlayChargingSFX(bool charged, float sliderValue)
     {
-        sfxSource.PlayOneShot(cardSFX.cardIdle_Charging);
-        if (sfxSource.isPlaying) sfxSource.volume = Mathf.Clamp01(sliderValue);
-        else sfxSource.volume = originalVolume;
+       if (!charged)
+       {
+            sfxSource.clip = cardSFX.cardIdle_Charging;
+            sfxSource.Play();
+            sfxSource.volume = Mathf.Clamp01(sliderValue);
 
+        }
+       else
+       {
+            if (sfxSource.clip == cardSFX.cardIdle_Charging) sfxSource.Stop();
+            sfxSource.volume = originalVolume;
+            sfxSource.PlayOneShot(cardSFX.cardIdle_FullyCharged);
+       }
 
     }
 }
