@@ -31,6 +31,7 @@ namespace Gestures
         {
             base.LogicUpdate();
             character.sliderUI.value += Time.deltaTime;
+            AudioManager.instance.PlayChargingSFX(ChargedShot);
             if (!ChargedShot || character.chargedFire.isPlaying) return;
             character.ToggleChargedParticles(true);
         }

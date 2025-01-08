@@ -69,6 +69,7 @@ namespace Card
         public void HoverCard()
         {
             glow.Play();
+            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardHover_Place);
             isActive = false;
             rb.isKinematic = true;
             trailRenderer.enabled = false;
