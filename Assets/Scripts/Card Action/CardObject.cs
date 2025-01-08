@@ -140,6 +140,9 @@ namespace Card
             isActive = false;
             anim.Play("Transition");
             StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, Vector3.down, defaultLaunchForce));
+
+            // play sound effect
+            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardHover_Launch);
         }
 
         private void OnTriggerExit(Collider other)

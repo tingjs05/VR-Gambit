@@ -150,6 +150,7 @@ namespace Gestures
         {
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);
+            AudioManager.instance.PlaySFX(active ? AudioManager.instance.cardSFX.cardIdle_HoldCard : AudioManager.instance.cardSFX.cardIdle_ReleaseCard);
         }
     }
 }
