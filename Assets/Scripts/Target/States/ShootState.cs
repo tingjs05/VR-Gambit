@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Patterns.FSM;
 
@@ -16,6 +14,7 @@ namespace Target
         public override void Enter()
         {
             // shoot
+            TargetsManager.Instance.InstantiateAndShoot(character.transform.position, character.transform.rotation);
             // reset cooldown
             cooldownCounter = 0f;
         }

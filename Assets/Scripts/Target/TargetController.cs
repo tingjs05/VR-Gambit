@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Patterns.FSM;
 
 namespace Target
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class TargetController : StateMachine<TargetController>
+    public class TargetController : StateMachine<TargetController>, IDamagable
     {
         [Header("Movement")]
         public float movementSpeed = 7f;
@@ -31,6 +29,12 @@ namespace Target
             Initialize(Charge);
 
             rb = GetComponent<Rigidbody>();
+        }
+
+        public void Damage()
+        {
+            gameObject.SetActive(false);
+            TargetsManager.Instance.OnDeath();
         }
     }
 }

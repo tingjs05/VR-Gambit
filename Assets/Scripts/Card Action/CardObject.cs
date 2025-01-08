@@ -131,6 +131,7 @@ namespace Card
             {
                 gameObject.SetActive(false);
                 ActionManager.Instance.SpawnHitParticle(other.transform.position);
+                if (other.TryGetComponent<IDamagable>(out IDamagable damagable)) damagable.Damage();
                 return;
             }
 
