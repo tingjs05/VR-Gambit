@@ -4669,7 +4669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef702e8ec311b145bcf55da6d193618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: -5147754063264824058, guid: 43ccc673792243a4d84a817410bd70c3,
+  cardPrefab: {fileID: -5147754063264824058, guid: f63fc4e417bb7164b9cd88e8358f15a5,
     type: 3}
   cardHitParticle: {fileID: 763510161194750540, guid: 2fb89c0b989e62c46ac81c3a58ed1c39,
     type: 3}
