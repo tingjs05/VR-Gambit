@@ -1,62 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
-    public static AudioManager instance { get; private set; }
-
-    public AudioSource sfxSource;
-
+    public AudioSource sfxSourceRight;
+    public AudioSource sfxSourceLeft;
     public CardSFX cardSFX;
-
     private float originalVolume;
 
-    private void Awake()
+    public static AudioManager Instance { get; private set; }
+
+    void Awake()
     {
-        if (instance != null) return;
-
-        instance = this;
-
-        originalVolume = this.sfxSource.volume;
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            gameObject.SetActive(false);
     }
 
-    public void PlaySFX(AudioClip sfxClip)
+    void Start()
     {
+        originalVolume = sfxSourceRight.volume;
+    }
+
+    public void PlaySFX(AudioClip sfxClip, bool isRightHand)
+    {
+        AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
         if (sfxSource.isPlaying) sfxSource.Stop();
+        sfxSource.volume = originalVolume;
         sfxSource.PlayOneShot(sfxClip);
     }
 
-    public void PlayVariedSFX(AudioClip sfxClip)
+    public void PlayVariedSFX(AudioClip sfxClip, bool isRightHand)
     {
+        AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
         if (sfxSource.isPlaying) sfxSource.Stop();
         sfxSource.volume = Random.Range(0.95f, 1.0f);
         sfxSource.pitch = Random.Range(0.8f, 1.0f);
         sfxSource.PlayOneShot(sfxClip);
     }
 
-    public void CutSFX()
+    public void CutSFX(bool isRightHand)
     {
+        AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
         sfxSource.Stop();
     }
 
-    public void PlayChargingSFX(bool charged, float sliderValue)
+    public void PlayChargingSFX(bool charged, float sliderValue, bool isRightHand)
     {
+        AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
+
        if (!charged)
        {
             sfxSource.clip = cardSFX.cardIdle_Charging;
             sfxSource.Play();
             sfxSource.volume = Mathf.Clamp01(sliderValue);
-
+            return;
         }
-       else
-       {
-            if (sfxSource.clip == cardSFX.cardIdle_Charging) sfxSource.Stop();
-            sfxSource.volume = originalVolume;
-            sfxSource.PlayOneShot(cardSFX.cardIdle_FullyCharged);
-       }
 
+        if (sfxSource.clip == cardSFX.cardIdle_Charging) sfxSource.Stop();
+        sfxSource.volume = originalVolume;
+        sfxSource.PlayOneShot(cardSFX.cardIdle_FullyCharged);
     }
 }

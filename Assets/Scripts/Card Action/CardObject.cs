@@ -1,4 +1,5 @@
 using System.Collections;
+using Gestures;
 using UnityEngine;
 
 namespace Card
@@ -140,9 +141,9 @@ namespace Card
             isActive = false;
             anim.Play("Transition");
             StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, Vector3.down, defaultLaunchForce));
-
             // play sound effect
-            AudioManager.instance.PlaySFX(AudioManager.instance.cardSFX.cardHover_Launch);
+            if (!other.TryGetComponent<ActionController>(out ActionController handController)) return;
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardHover_Launch, handController.isRightHand);
         }
 
         private void OnTriggerExit(Collider other)

@@ -11,7 +11,7 @@ namespace Card
         {
             CardObject card = ActionManager.Instance.InstantiateCard(handPosition, handRotation);
             card.LaunchCard((Vector3.down + outVector).normalized, throwScale * throwSpeed, !charged, hand);
-            AudioManager.instance.PlaySFX(charged ? AudioManager.instance.cardSFX.cardThrow_Charged : AudioManager.instance.cardSFX.cardThrow_Normal);
+            AudioManager.Instance.PlaySFX(charged ? AudioManager.Instance.cardSFX.cardThrow_Charged : AudioManager.Instance.cardSFX.cardThrow_Normal, hand);
             card.chargedGlow.SetActive(charged);
             if (!charged) return;
             card.canSteer = true;

@@ -20,7 +20,9 @@ namespace Gestures
             character.cardThrowingManager.ThrowCard((character.isRightHand ? Vector3.right : Vector3.left), 
                 character.hand_position, character.hand_rotation, throwSpeed, character.TwoFinger.ChargedShot, character.isRightHand);
             // throw sfx
-            AudioManager.instance.PlayVariedSFX(character.TwoFinger.ChargedShot ? AudioManager.instance.cardSFX.cardThrow_Charged : AudioManager.instance.cardSFX.cardThrow_Normal);
+            AudioManager.Instance.PlayVariedSFX(character.TwoFinger.ChargedShot ? 
+                AudioManager.Instance.cardSFX.cardThrow_Charged : AudioManager.Instance.cardSFX.cardThrow_Normal, 
+                character.isRightHand);
         }
     }
 }
