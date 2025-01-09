@@ -18,15 +18,6 @@ namespace Gestures
                 Gestures.Add(name, false);
         }
 
-        void LateUpdate()
-        {
-            // reset all gestures after each frame
-            foreach (string key in Gestures.Keys)
-            {
-                Gestures[key] = false;
-            }
-        }
-
         public void GestureActive(string name)
         {
             SetBool(name, true);
