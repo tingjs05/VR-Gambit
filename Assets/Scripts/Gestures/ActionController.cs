@@ -84,8 +84,16 @@ namespace Gestures
         {
             base.Update();
 
+            // check if hand is found, and disable finger card if hand is not detected
+            if (!handDevice.isValid)
+            {
+                if (fingerCard != null) 
+                    fingerCard.gameObject.SetActive(false);
+                
+                return;
+            }
+
             // Update hand position and rotation
-            if (!handDevice.isValid) return;
             handDevice.TryGetFeatureValue(CommonUsages.devicePosition, out handPosition);
             handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
 
