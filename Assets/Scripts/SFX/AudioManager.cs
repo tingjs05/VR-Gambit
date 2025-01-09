@@ -45,20 +45,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.Stop();
     }
 
-    public void PlayChargingSFX(bool charged, float sliderValue, bool isRightHand)
+    public void HandleChargingVolume(bool charged, float sliderValue, bool isRightHand)
     {
         AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
 
        if (!charged)
        {
-            sfxSource.clip = cardSFX.cardIdle_Charging;
-            sfxSource.Play();
             sfxSource.volume = Mathf.Clamp01(sliderValue);
             return;
-        }
+       }
 
-        if (sfxSource.clip == cardSFX.cardIdle_Charging) sfxSource.Stop();
         sfxSource.volume = originalVolume;
-        sfxSource.PlayOneShot(cardSFX.cardIdle_FullyCharged);
     }
 }
