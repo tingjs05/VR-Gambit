@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour
     public void CutSFX(bool isRightHand)
     {
         AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
+
         sfxSource.Stop();
     }
 
@@ -54,7 +55,14 @@ public class AudioManager : MonoBehaviour
             sfxSource.volume = Mathf.Clamp01(sliderValue);
             return;
        }
-
-        sfxSource.volume = originalVolume;
+        
+       if (sfxSource.clip == cardSFX.cardIdle_Charging) CutSFX(isRightHand);
+       sfxSource.volume = originalVolume;
     }
+
+    public AudioSource GetAudioSource(bool isRightHand)
+    {
+        return isRightHand ? sfxSourceRight : sfxSourceLeft;
+    }
+
 }

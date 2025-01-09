@@ -22,6 +22,8 @@ namespace Gestures
             character.glow.Play();
             character.fire.Play();
             character.ToggleChargedParticles(false);
+            AudioManager.Instance.GetAudioSource(character.isRightHand).clip = AudioManager.Instance.cardSFX.cardIdle_Charging;
+            AudioManager.Instance.GetAudioSource(character.isRightHand).Play();
             // show UI to indicate charge
             character.sliderUI.gameObject.SetActive(true);
             character.sliderUI.value = 0f;
@@ -31,7 +33,7 @@ namespace Gestures
         {
             base.LogicUpdate();
             character.sliderUI.value = (character.sliderUI.maxValue * character.sliderUI.value) + Time.deltaTime;
-            //AudioManager.Instance.HandleChargingVolume(ChargedShot, character.sliderUI.value / character.sliderUI.maxValue, character.isRightHand);
+            AudioManager.Instance.HandleChargingVolume(ChargedShot, character.sliderUI.value / character.sliderUI.maxValue, character.isRightHand);
             if (!ChargedShot || character.chargedFire.isPlaying) return;
             character.ToggleChargedParticles(true);
         }
@@ -43,6 +45,8 @@ namespace Gestures
             if (character.chargedFire.isPlaying)
                 character.ToggleChargedParticles(false);
             
+            if (AudioManager.Instance.GetAudioSource(character.isRightHand).isPlaying) AudioManager.Instance.CutSFX(character.isRightHand);
+
             character.sliderUI.gameObject.SetActive(false);
         }
 
