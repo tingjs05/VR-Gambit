@@ -8,15 +8,13 @@ namespace Gestures
         {
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-            character.ToggleFingerCard(false);
-        }
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            if (character.fingerCard != null) 
+                character.fingerCard.gameObject.SetActive(false);
+            
             if (!character.gestureManager.Gestures["Two Finger"]) return;
             fsm.SwitchState(character.TwoFinger);
         }

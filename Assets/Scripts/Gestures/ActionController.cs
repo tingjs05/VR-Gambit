@@ -84,16 +84,8 @@ namespace Gestures
         {
             base.Update();
 
-            // check if hand is found, and disable finger card if hand is not detected
-            if (!handDevice.isValid)
-            {
-                if (fingerCard != null) 
-                    fingerCard.gameObject.SetActive(false);
-                
-                return;
-            }
-
             // Update hand position and rotation
+            if (!handDevice.isValid) return;
             handDevice.TryGetFeatureValue(CommonUsages.devicePosition, out handPosition);
             handDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out handRotation);
 
@@ -150,11 +142,12 @@ namespace Gestures
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);
             if (AudioManager.Instance == null) return;
+
             if (active) 
             {
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_HoldCard, isRightHand);
                 return;
-            };
+            }
 
             if (!overrideReleaseSFX) AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, isRightHand);
  
