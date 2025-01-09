@@ -41,12 +41,13 @@ namespace Card
             return cardPool[^1];
         }
 
-        public void SpawnHitParticle(Vector3 position)
+        public void SpawnHitParticle(Vector3 position, Vector3 forward)
         {
             foreach (ParticleSystem particleSystem in hitParticlePool)
             {
                 if (particleSystem.isPlaying) continue;
                 particleSystem.transform.position = position;
+                particleSystem.transform.forward = -forward;
                 particleSystem.Play();
                 return;
             }
@@ -54,6 +55,7 @@ namespace Card
             GameObject obj = Instantiate(cardHitParticle.gameObject);
             hitParticlePool.Add(obj.GetComponent<ParticleSystem>());
             hitParticlePool[^1].transform.position = position;
+            hitParticlePool[^1].transform.forward = -forward;
             hitParticlePool[^1].Play();
         }
     }
