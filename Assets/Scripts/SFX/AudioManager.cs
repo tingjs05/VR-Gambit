@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip sfxClip, bool isRightHand)
     {
         AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
-        if (sfxSource.isPlaying) sfxSource.Stop();
+        //if (sfxSource.isPlaying) sfxSource.Stop();
         sfxSource.volume = originalVolume;
         sfxSource.PlayOneShot(sfxClip);
     }
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
     public void PlayVariedSFX(AudioClip sfxClip, bool isRightHand)
     {
         AudioSource sfxSource = isRightHand ? sfxSourceRight : sfxSourceLeft;
-        if (sfxSource.isPlaying) sfxSource.Stop();
+        //if (sfxSource.isPlaying) sfxSource.Stop();
         sfxSource.volume = Random.Range(0.95f, 1.0f);
         sfxSource.pitch = Random.Range(0.8f, 1.0f);
         sfxSource.PlayOneShot(sfxClip);

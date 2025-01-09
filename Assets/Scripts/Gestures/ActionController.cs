@@ -137,15 +137,19 @@ namespace Gestures
             lightning.Stop();
         }
 
-        public void ToggleFingerCard(bool active)
+        public void ToggleFingerCard(bool active, bool overrideReleaseSFX = false)
         {
             if (fingerCard == null) return;
             fingerCard.gameObject.SetActive(active);
             if (AudioManager.Instance == null) return;
-            AudioManager.Instance.PlaySFX(active ? 
-                AudioManager.Instance.cardSFX.cardIdle_HoldCard : 
-                AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, 
-                isRightHand);
+            if (active) 
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_HoldCard, isRightHand);
+                return;
+            };
+
+            if (!overrideReleaseSFX) AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, isRightHand);
+ 
         }
     }
 }
