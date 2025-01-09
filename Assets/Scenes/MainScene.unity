@@ -2096,7 +2096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d4910004d69fc4c9e274dd566066bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwScale: 3500
+  throwScale: 5000
 --- !u!114 &1007769360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,7 +2127,7 @@ MonoBehaviour:
     type: 3}
   cardHitParticle: {fileID: 763510161194750540, guid: 2fb89c0b989e62c46ac81c3a58ed1c39,
     type: 3}
-  defaultLaunchForce: 500
+  defaultLaunchForce: 1000
 --- !u!1 &1090987088
 GameObject:
   m_ObjectHideFlags: 0
