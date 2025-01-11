@@ -15,6 +15,7 @@ namespace Target
         public override void Enter()
         {
             timeInState = 0f;
+            character.anim.SetBool("IsWalking", true);
         }
 
         public override void LogicUpdate()
@@ -43,6 +44,11 @@ namespace Target
             
             // walk forward
             character.rb.AddForce(character.transform.forward * character.movementSpeed * Time.deltaTime, ForceMode.VelocityChange);
+        }
+
+        public override void Exit()
+        {
+            character.anim.SetBool("IsWalking", false);
         }
     }
 }

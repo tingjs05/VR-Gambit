@@ -14,9 +14,6 @@ namespace Target
         public TargetController targetPrefab;
         private List<TargetController> targetPool = new List<TargetController>();
 
-        public LazerProjectile lazerPrefab;
-        private List<LazerProjectile> lazerPool = new List<LazerProjectile>();
-
         public static TargetsManager Instance { get; private set; }
 
         void Awake()
@@ -37,23 +34,6 @@ namespace Target
         {
             if (targetPool.Where(x => x.gameObject.activeInHierarchy).ToList().Count >= maxTargets) return;
             InstantiateTarget();
-        }
-
-        public void InstantiateAndShoot(Vector3 position, Quaternion rotation, Transform parent = null)
-        {
-            foreach (LazerProjectile lazer in lazerPool)
-            {
-                if (lazer.gameObject.activeSelf) continue;
-                if (parent != null) lazer.transform.parent = parent;
-                lazer.Reset(position, rotation);
-                lazer.Shoot();
-                return;
-            }
-
-            GameObject obj = Instantiate(lazerPrefab.gameObject, position, rotation);
-            if (parent != null) obj.transform.parent = parent;
-            lazerPool.Add(obj.GetComponent<LazerProjectile>());
-            lazerPool[^1].Shoot();
         }
 
         void InstantiateTarget()
