@@ -18,7 +18,7 @@ namespace Target
             foreach (LazerProjectile lazer in lazerPool)
             {
                 if (lazer.gameObject.activeSelf) continue;
-                lazer.ResetObject(position, rotation);
+                lazer.ResetTransform(position, rotation);
                 lazer.Shoot();
                 return;
             }

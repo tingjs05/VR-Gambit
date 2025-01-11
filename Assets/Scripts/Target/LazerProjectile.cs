@@ -19,7 +19,7 @@ namespace Target
         {
             timeElasped += Time.deltaTime;
 
-            if (rb.velocity == Vector3.zero || timeElasped > maxActiveDuration)
+            if (timeElasped > maxActiveDuration)
                 gameObject.SetActive(false);
         }
 
@@ -31,7 +31,7 @@ namespace Target
             damagable.Damage();
         }
 
-        public void ResetObject(Vector3 position, Quaternion rotation)
+        public void ResetTransform(Vector3 position, Quaternion rotation)
         {
             timeElasped = 0f;
             rb.velocity = Vector3.zero;
