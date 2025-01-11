@@ -92,6 +92,9 @@ namespace Gestures
             transform.position = handPosition;
             transform.rotation = handRotation;
 
+            // check if hand is tracked
+            if (!hand.isTracked) 
+                fingerCard.gameObject.SetActive(false);
             // move objects according to hand position and rotation
             MoveFingerCard();
         }
