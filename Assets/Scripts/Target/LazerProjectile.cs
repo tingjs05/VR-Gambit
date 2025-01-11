@@ -31,7 +31,7 @@ namespace Target
             damagable.Damage();
         }
 
-        public void Reset(Vector3 position, Quaternion rotation)
+        public void ResetObject(Vector3 position, Quaternion rotation)
         {
             timeElasped = 0f;
             rb.velocity = Vector3.zero;

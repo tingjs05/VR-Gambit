@@ -10,22 +10,20 @@ namespace Target
 
         public void Shoot()
         {
-            InstantiateAndShoot(transform.parent.position, transform.parent.rotation, transform);
+            InstantiateAndShoot(transform.parent.position, transform.parent.rotation);
         }
 
-        public void InstantiateAndShoot(Vector3 position, Quaternion rotation, Transform parent = null)
+        public void InstantiateAndShoot(Vector3 position, Quaternion rotation)
         {
             foreach (LazerProjectile lazer in lazerPool)
             {
                 if (lazer.gameObject.activeSelf) continue;
-                if (parent != null) lazer.transform.parent = parent;
-                lazer.Reset(position, rotation);
+                lazer.ResetObject(position, rotation);
                 lazer.Shoot();
                 return;
             }
 
             GameObject obj = Instantiate(lazerPrefab.gameObject, position, rotation);
-            if (parent != null) obj.transform.parent = parent;
             lazerPool.Add(obj.GetComponent<LazerProjectile>());
             lazerPool[^1].Shoot();
         }
