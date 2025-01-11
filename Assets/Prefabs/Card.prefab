@@ -218,9 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd9d2a531a45dc41aca02be1f6899dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steerStrength: 3
-  maxSteerAngle: 60
-  maxVelocity: 25
+  steerStrength: 6.5
+  maxSteerAngle: 75
+  maxVelocity: 40
 --- !u!96 &7434227520700999738
 TrailRenderer:
   serializedVersion: 3
