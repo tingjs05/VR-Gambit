@@ -18,6 +18,9 @@ namespace Target
         public float minDistanceFromTarget = 5f;
         public float shootCooldown = 1f;
 
+        [Header("Animation")]
+        public Animator anim;
+
         public ChargeState Charge { get; private set; }
         public ShootState Shoot { get; private set; }
         public Rigidbody rb { get; private set; }

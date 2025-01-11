@@ -14,8 +14,9 @@ namespace Target
 
         public override void Enter()
         {
-            // shoot
-            TargetsManager.Instance.InstantiateAndShoot(character.transform.position, character.transform.rotation);
+            // shooting behaviour is called by the animation event
+            // play shoot animation
+            character.anim.SetTrigger("Shoot");
             // reset cooldown
             cooldownCounter = 0f;
         }
@@ -27,7 +28,15 @@ namespace Target
             directionToTarget.Normalize();
 
             if (Vector3.Dot(character.transform.forward, directionToTarget) < character.rotationThreshold)
-                character.transform.forward = Vector3.Lerp(character.transform.forward, directionToTarget, Time.deltaTime * character.rotationScale);
+            {
+                character.transform.forward = Vector3.Lerp(character.transform.forward, directionToTarget, Time.deltaTime * 
+                    character.rotationScale);
+                character.anim.SetBool("IsWalking", true);
+            }
+            else
+            {
+                character.anim.SetBool("IsWalking", false);
+            }
 
             cooldownCounter += Time.deltaTime;
             if (cooldownCounter <= character.shootCooldown) return;
@@ -41,6 +50,12 @@ namespace Target
 
             // change to charge state
             fsm.SwitchState(character.Charge);
+        }
+
+        public override void Exit()
+        {
+            // reset shoot trigger before exitting
+            character.anim.ResetTrigger("Shoot");
         }
     }
 }

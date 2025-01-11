@@ -172,8 +172,6 @@ MonoBehaviour:
   minPos: {x: -30, y: 3}
   targetPrefab: {fileID: 5311799341285119904, guid: 8fff245538ba36649b1768cedb3e82d1,
     type: 3}
-  lazerPrefab: {fileID: 3211758199612586920, guid: 395d547c5a81e5948a3359bff4c374a0,
-    type: 3}
 --- !u!1 &279150706
 GameObject:
   m_ObjectHideFlags: 0
