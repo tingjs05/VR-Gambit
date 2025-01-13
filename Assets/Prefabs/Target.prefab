@@ -100,7 +100,7 @@ MonoBehaviour:
   rotationScale: 1
   rotationThreshold: 0.995
   maxMoveDuration: 2
-  minDistanceFromTarget: 7
+  minDistanceFromTarget: 10
   shootCooldown: 1
   anim: {fileID: 7227754894525682243}
 --- !u!1001 &3829380616429498322
