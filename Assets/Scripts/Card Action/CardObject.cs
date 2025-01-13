@@ -11,7 +11,10 @@ namespace Card
         public float maxSteerDuration = 5f;
         public TrailRenderer trailRenderer;
         public ParticleSystem glow;
+
+        [Header("Charged Card")]
         public GameObject chargedGlow;
+        public Collider chargedCollider;
 
         [Header("Animation")]
         public float touchCardLaunchDelay = 0.5f;
@@ -55,6 +58,8 @@ namespace Card
         {
             this.defaultLaunchForce = defaultLaunchForce;
             trailRenderer.enabled = false;
+            chargedCollider.enabled = false;
+            chargedGlow.SetActive(false);
             glow.Stop();
             anim.Play("Default");
             rb = GetComponent<Rigidbody>();
@@ -65,12 +70,14 @@ namespace Card
 
         public void ResetCard(Vector3 position, Quaternion rotation)
         {
+            trailRenderer.enabled = false;
+            chargedCollider.enabled = false;
+            chargedGlow.SetActive(false);
             glow.Stop();
             anim.Play("Default");
             transform.position = position;
             transform.rotation = rotation;
             rb.velocity = Vector3.zero;
-            trailRenderer.enabled = false;
             canSteer = false;
             launched = false;
         }

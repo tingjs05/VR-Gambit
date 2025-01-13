@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716997178671149887}
   - component: {fileID: 1085253300802848068}
+  - component: {fileID: 3289233859337348819}
   - component: {fileID: 5431460324735454538}
   - component: {fileID: -5147754063264824058}
   - component: {fileID: 4469172465678736442}
@@ -160,6 +161,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.115, y: 0.01, z: 0.155}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &3289233859337348819
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8350645947206807028}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5431460324735454538
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -204,6 +226,7 @@ MonoBehaviour:
   trailRenderer: {fileID: 7434227520700999738}
   glow: {fileID: 4259907878857699269}
   chargedGlow: {fileID: 7029992666345434113}
+  chargedCollider: {fileID: 3289233859337348819}
   touchCardLaunchDelay: 0.75
   anim: {fileID: 1771281335034771410}
 --- !u!114 &4469172465678736442
