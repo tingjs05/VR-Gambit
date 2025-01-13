@@ -168,8 +168,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTargets: 5
   yPos: 1.5
-  maxPos: {x: 30, y: 55}
-  minPos: {x: -30, y: 3}
+  targetSpawnRange:
+  - maxPos: {x: 30, y: 55}
+    minPos: {x: -30, y: 3}
+  - maxPos: {x: -8, y: 30}
+    minPos: {x: -55, y: -30}
+  - maxPos: {x: 8, y: 30}
+    minPos: {x: 55, y: -30}
+  - maxPos: {x: 30, y: -55}
+    minPos: {x: -30, y: -3}
   targetPrefab: {fileID: 5311799341285119904, guid: 8fff245538ba36649b1768cedb3e82d1,
     type: 3}
 --- !u!1 &279150706

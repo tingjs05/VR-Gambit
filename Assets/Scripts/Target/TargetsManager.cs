@@ -8,8 +8,14 @@ namespace Target
     {
         public int maxTargets = 5;
         public float yPos = 1.5f;
-        public Vector2 maxPos;
-        public Vector2 minPos;
+
+        public TargetSpawnRange[] targetSpawnRange;
+        [System.Serializable]
+        public struct TargetSpawnRange
+        {
+            public Vector2 maxPos;
+            public Vector2 minPos;
+        }
 
         public TargetController targetPrefab;
         private List<TargetController> targetPool = new List<TargetController>();
@@ -38,7 +44,9 @@ namespace Target
 
         void InstantiateTarget()
         {
-            Vector3 position = new Vector3(Random.Range(minPos.x, maxPos.x), yPos, Random.Range(minPos.y, maxPos.y));
+            int index = Random.Range(0, targetSpawnRange.Length);
+            Vector3 position = new Vector3(Random.Range(targetSpawnRange[index].minPos.x, targetSpawnRange[index].maxPos.x), yPos, 
+                Random.Range(targetSpawnRange[index].minPos.y, targetSpawnRange[index].maxPos.y));
 
             Vector3 forward = Camera.main.transform.position - position;
             forward.y = 0f;
@@ -60,14 +68,22 @@ namespace Target
 
         void OnDrawGizmosSelected() 
         {
-            Vector3 max_pos = new Vector3(maxPos.x, yPos, maxPos.y);
-            Vector3 min_pos = new Vector3(minPos.x, yPos, minPos.y);
+            if (targetSpawnRange == null || targetSpawnRange.Length == 0) return;
 
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(max_pos, 0.5f);
-            Gizmos.DrawSphere(min_pos, 0.5f);
-            Gizmos.DrawSphere(new Vector3(max_pos.x, yPos, min_pos.z), 0.5f);
-            Gizmos.DrawSphere(new Vector3(min_pos.x, yPos, max_pos.z), 0.5f);
+            Vector3 max_pos, min_pos;
+
+            foreach (TargetSpawnRange spawnRange in targetSpawnRange)
+            {
+                max_pos = new Vector3(spawnRange.maxPos.x, yPos, spawnRange.maxPos.y);
+                min_pos = new Vector3(spawnRange.minPos.x, yPos, spawnRange.minPos.y);
+
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawSphere(max_pos, 0.5f);
+                Gizmos.DrawSphere(min_pos, 0.5f);
+                Gizmos.DrawSphere(new Vector3(max_pos.x, yPos, min_pos.z), 0.5f);
+                Gizmos.DrawSphere(new Vector3(min_pos.x, yPos, max_pos.z), 0.5f);
+            }
         }
+            
     }
 }
