@@ -4,6 +4,8 @@ Play as X-Men Gambit with powerful card skills! Learn to toss card with accuracy
 [![Gambit VR for XR Challenge - Video Demonstration](https://github.com/user-attachments/assets/0af69a96-c6be-41ca-90e1-280995cb1ad4)](https://www.youtube.com/watch?v=S1Osihe4oT4&t=12s)
 _(Click on the image to watch a video demonstration!)_
 
+This project can also be found on [Devpost](https://devpost.com/software/gambit-vr). 
+
 ## Inspiration
 Gambit in X-men is a cool character that is underrepresented in X-men series. He's throwing skill and fighting skill is easily replicated for hobby and combat experience. Hence, this game is designed to let players become Gambit and have cool card throwing skills and special abilities to fight the Sentinels
 
