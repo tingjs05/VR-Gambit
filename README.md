@@ -24,3 +24,11 @@ During our time doing this challenge, we've gained a better understanding on how
 
 ## What's next for Gambit VR
 We hope to develop this further by designing a short 5 - 10 minutes level game. This helps us gain better understanding on the reception of this game concept before further planning a large scale project.
+
+## Attributions
+
+"Sentinel With Shield Pack V2" asset created by Honorsoft. Asset Source(s): https://www.deviantart.com/honorsoft/art/Sentinel-With-Shield-Pack-V2-FBX-XPS-DOWNLOAD-888722477
+
+"vector-playing-cards" asset created by Byron Knoll. Asset Source(s): http://code.google.com/p/vector-playing-cards/ (Retrieved from: https://opengameart.org/content/playing-cards-vector-png)
+
+"Elemental Magic Sound Effects (Lightning, Fire and Water)" asset created by LastDayDreaming Asset Source(s): https://lastdaydreaming.itch.io/elemental-magic-lightning-attacks-audio-assets-collection https://lastdaydreaming.itch.io/elemental-magic-water-attacks-audio-assets-collection https://lastdaydreaming.itch.io/elemental-magic-fire-attacks
