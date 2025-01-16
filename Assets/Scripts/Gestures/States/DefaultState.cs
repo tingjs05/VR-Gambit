@@ -12,6 +12,7 @@ namespace Gestures
         {
             base.Enter();
             character.ToggleFingerCard(false);
+            character.autoAimIndicator.gameObject.SetActive(false);
         }
 
         public override void LogicUpdate()

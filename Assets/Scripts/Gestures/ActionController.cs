@@ -19,6 +19,9 @@ namespace Gestures
         public ParticleSystem glow, fire, chargedFire, lightning;
         public BoxSlider sliderUI;
 
+        [Header("Auto Aim")]
+        public Transform autoAimIndicator;
+
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
         public CardPlacement cardPlacementManager;

@@ -95,7 +95,7 @@ namespace Card
             launched = true;
             isActive = true;
             // rotate card to face direction
-            transform.forward = transform.rotation * forwardDir;
+            transform.forward = forwardDir;
             glow.Stop();
             trailRenderer.enabled = true;
             rb.isKinematic = false;
@@ -147,7 +147,7 @@ namespace Card
             // delay launch to play animation
             isActive = false;
             anim.Play("Transition");
-            StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, Vector3.down, defaultLaunchForce));
+            StartCoroutine(DelayedLaunchCard(touchCardLaunchDelay, -transform.up, defaultLaunchForce));
             // play sound effect
             if (!other.TryGetComponent<ActionController>(out ActionController handController)) return;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardHover_Launch, handController.isRightHand);

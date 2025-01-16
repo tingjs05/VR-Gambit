@@ -7,10 +7,10 @@ namespace Card
         public float throwScale = 500f;
 
         // Method to throw a card
-        public void ThrowCard(Vector3 outVector, Vector3 handPosition, Quaternion handRotation, float throwSpeed, bool charged, bool hand)
+        public void ThrowCard(Vector3 direction, Vector3 handPosition, Quaternion handRotation, float throwSpeed, bool charged, bool hand)
         {
             CardObject card = ActionManager.Instance.InstantiateCard(handPosition, handRotation);
-            card.LaunchCard((Vector3.down + outVector).normalized, throwScale * throwSpeed, !charged, hand);
+            card.LaunchCard(direction, throwScale * throwSpeed, !charged, hand);
             AudioManager.Instance.PlaySFX(charged ? AudioManager.Instance.cardSFX.cardThrow_Charged : 
                 AudioManager.Instance.cardSFX.cardThrow_Normal, hand);
             card.chargedGlow.SetActive(charged);
