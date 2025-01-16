@@ -2908,6 +2908,11 @@ MonoBehaviour:
   offsetFloat: 0.0325
   sliderUIOffset: {x: -0.08, y: -0.03, z: -0.01}
   cardChargeDuration: 2.5
+  detectionRange: 15
+  useAutoAim: 1
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &1958177440
 PrefabInstance:
   m_ObjectHideFlags: 0
