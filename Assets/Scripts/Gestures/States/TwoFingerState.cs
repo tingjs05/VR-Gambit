@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using Patterns.FSM;
 
@@ -86,10 +85,14 @@ namespace Gestures
             float currDot, selectedDot;
 
             // filter out targets behind the player, then sort by distance and angle to direction player is pointing
+            // also filter out targets outside max angle
             for (int i = 0; i < cols.Length; i++)
             {
                 if (Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
-                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0)
+                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
+                    Mathf.Abs(Vector3.Angle(GetHorizontalVector((character.hand_position - Camera.main.transform.forward).normalized), 
+                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
+                    character.gestureSettings.max_angle)
                         continue;
                 
                 // if selected target is null, set current collider as selected target
@@ -98,13 +101,6 @@ namespace Gestures
                     SelectedTarget = cols[i].transform;
                     continue;
                 }
-
-                // if current target is outside max angle, do not check
-                if (Mathf.Abs(Vector3.Angle(
-                    GetHorizontalVector((character.hand_position - Camera.main.transform.forward).normalized), 
-                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
-                    character.gestureSettings.max_angle)
-                        continue;
 
                 // calculate dot of direction of target to direction to hand
                 currDot = Vector3.Dot(GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
