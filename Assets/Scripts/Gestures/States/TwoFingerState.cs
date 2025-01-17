@@ -90,7 +90,7 @@ namespace Gestures
                 if (Vector3.Dot(character.GetHorizontalVector(Camera.main.transform.forward), 
                     character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
                     Mathf.Abs(Vector3.Angle(character.GetHorizontalVector(Camera.main.transform.forward), 
-                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) > 
                     character.gestureSettings.max_angle)
                         continue;
                 
