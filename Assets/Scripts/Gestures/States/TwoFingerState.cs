@@ -7,10 +7,9 @@ namespace Gestures
     {
         // charged shot
         public bool ChargedShot => character.sliderUI.value >= 1f;
-
         // audo aim
-        public Transform SelectedTarget { get; private set; } = null;
-        Collider[] cols;
+        public Transform SelectedTarget = null;
+        private Collider[] cols;
 
         public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, character.WindUp, 
@@ -88,10 +87,10 @@ namespace Gestures
             // also filter out targets outside max angle
             for (int i = 0; i < cols.Length; i++)
             {
-                if (Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
-                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
-                    Mathf.Abs(Vector3.Angle(GetHorizontalVector((character.hand_position - Camera.main.transform.forward).normalized), 
-                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
+                if (Vector3.Dot(character.GetHorizontalVector(Camera.main.transform.forward), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
+                    Mathf.Abs(Vector3.Angle(character.GetHorizontalVector((character.hand_position - Camera.main.transform.forward).normalized), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
                     character.gestureSettings.max_angle)
                         continue;
                 
@@ -103,10 +102,10 @@ namespace Gestures
                 }
 
                 // calculate dot of direction of target to direction to hand
-                currDot = Vector3.Dot(GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
-                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized));
-                selectedDot = Vector3.Dot(GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
-                    GetHorizontalVector((SelectedTarget.position - Camera.main.transform.position).normalized));
+                currDot = Vector3.Dot(character.GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized));
+                selectedDot = Vector3.Dot(character.GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    character.GetHorizontalVector((SelectedTarget.position - Camera.main.transform.position).normalized));
 
                 // if both dots are the same, check which is nearer
                 if (currDot == selectedDot && (
@@ -121,12 +120,6 @@ namespace Gestures
             }
 
             return SelectedTarget != null;
-        }
-
-        Vector3 GetHorizontalVector(Vector3 vec)
-        {
-            vec.y = 0f;
-            return vec.normalized;
         }
     }
 }

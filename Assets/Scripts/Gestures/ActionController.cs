@@ -97,10 +97,8 @@ namespace Gestures
 
             // move objects according to hand position and rotation
             MoveFingerCard();
-            
-            // update auto aim indicator position
-            if (autoAimIndicator == null || TwoFinger.SelectedTarget == null) return;
-            autoAimIndicator.position = TwoFinger.SelectedTarget.position;
+            // verify selected target
+            CheckSelectedTarget();
         }
 
         void MoveFingerCard()
@@ -128,6 +126,27 @@ namespace Gestures
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
                 (handRotation * gestureSettings.card_rotation_offset));
+        }
+
+        void CheckSelectedTarget()
+        {
+            if (TwoFinger.SelectedTarget == null) return;
+
+            // update auto aim indicator position
+            if (autoAimIndicator != null)
+                autoAimIndicator.position = TwoFinger.SelectedTarget.position;
+
+            // check if selected target is still in front of player and within allowed angle
+            if (Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
+                GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized)) >= 0 || 
+                Mathf.Abs(Vector3.Angle(GetHorizontalVector((hand_position - Camera.main.transform.forward).normalized), 
+                GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized))) >= 
+                gestureSettings.max_angle)
+                    return;
+            
+            // reset selected target
+            TwoFinger.SelectedTarget = null;
+            autoAimIndicator.gameObject.SetActive(false);
         }
 
         public void ToggleChargedParticles(bool play)
@@ -158,6 +177,12 @@ namespace Gestures
 
             if (!overrideReleaseSFX) AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, isRightHand);
  
+        }
+
+        public Vector3 GetHorizontalVector(Vector3 vec)
+        {
+            vec.y = 0f;
+            return vec.normalized;
         }
     }
 }
