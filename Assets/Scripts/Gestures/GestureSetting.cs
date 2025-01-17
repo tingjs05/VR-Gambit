@@ -27,6 +27,7 @@ namespace Gestures
 
         [Header("Auto Aim")]
         [SerializeField] private float detectionRange = 15f;
+        [SerializeField] private float maxAngle = 75f;
         [SerializeField] private bool useAutoAim = true;
         [SerializeField] private LayerMask targetMask;
         #endregion
@@ -54,6 +55,7 @@ namespace Gestures
 
         // auto aim
         public float detection_range => detectionRange;
+        public float max_angle => maxAngle;
         public bool use_auto_aim => useAutoAim;
         public LayerMask target_mask => targetMask;
         #endregion

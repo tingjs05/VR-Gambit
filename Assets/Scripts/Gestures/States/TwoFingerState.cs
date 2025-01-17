@@ -11,7 +11,6 @@ namespace Gestures
 
         // audo aim
         public Transform SelectedTarget { get; private set; } = null;
-        Vector3 camHorForward;
         Collider[] cols;
 
         public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
@@ -77,27 +76,55 @@ namespace Gestures
         bool AutoAim()
         {
             if (!character.gestureSettings.use_auto_aim) return false;
+
             // detect targets
             cols = Physics.OverlapSphere(Camera.main.transform.position, character.gestureSettings.detection_range, 
                 character.gestureSettings.target_mask);
             // check if any targets are detected
             if (cols == null || cols.Length <= 0) return false;
-            // get horizontal forward vector of camera/player
-            camHorForward = GetHorizontalVector(Camera.main.transform.forward);
-            // filter out targets behind the player and sort by distance
-            cols = cols
-                .Where(x => Vector3.Dot(camHorForward, 
-                    GetHorizontalVector((x.transform.position - Camera.main.transform.position).normalized)) >= 0)
-                .OrderBy(x => 
-                    Vector3.Distance(x.transform.position, Camera.main.transform.position) + Mathf.Abs(Vector3.Angle(camHorForward, 
-                    GetHorizontalVector((x.transform.position - Camera.main.transform.position).normalized))))
-                .ToArray();
-            // set selected target
-            if (cols.Length <= 0) return false;
-            SelectedTarget = cols[0].transform;
-            // set indicator
-            character.autoAimIndicator.position = SelectedTarget.position;
-            return true;
+
+            float currDot, selectedDot;
+
+            // filter out targets behind the player, then sort by distance and angle to direction player is pointing
+            for (int i = 0; i < cols.Length; i++)
+            {
+                if (Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
+                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0)
+                        continue;
+                
+                // if selected target is null, set current collider as selected target
+                if (SelectedTarget == null)
+                {
+                    SelectedTarget = cols[i].transform;
+                    continue;
+                }
+
+                // if current target is outside max angle, do not check
+                if (Mathf.Abs(Vector3.Angle(
+                    GetHorizontalVector((character.hand_position - Camera.main.transform.forward).normalized), 
+                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) < 
+                    character.gestureSettings.max_angle)
+                        continue;
+
+                // calculate dot of direction of target to direction to hand
+                currDot = Vector3.Dot(GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized));
+                selectedDot = Vector3.Dot(GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    GetHorizontalVector((SelectedTarget.position - Camera.main.transform.position).normalized));
+
+                // if both dots are the same, check which is nearer
+                if (currDot == selectedDot && (
+                    Vector3.Distance(cols[i].transform.position, Camera.main.transform.position) >= 
+                    Vector3.Distance(SelectedTarget.position, Camera.main.transform.position)))
+                        continue;
+
+                // do not replace selected target if current one has a wider angle
+                if (currDot < selectedDot) continue;
+                // replace selected target
+                SelectedTarget = cols[i].transform;
+            }
+
+            return SelectedTarget != null;
         }
 
         Vector3 GetHorizontalVector(Vector3 vec)

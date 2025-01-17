@@ -97,6 +97,10 @@ namespace Gestures
 
             // move objects according to hand position and rotation
             MoveFingerCard();
+            
+            // update auto aim indicator position
+            if (autoAimIndicator == null || TwoFinger.SelectedTarget == null) return;
+            autoAimIndicator.position = TwoFinger.SelectedTarget.position;
         }
 
         void MoveFingerCard()
