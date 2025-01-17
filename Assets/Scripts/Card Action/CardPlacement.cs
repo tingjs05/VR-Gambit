@@ -13,11 +13,12 @@ namespace Card
         {
             CardObject card = ActionManager.Instance.InstantiateCard(handPosition, handRotation);
             card.HoverCard();
-            // if there is a selected target, point towards it
-            if (selectedTarget != null) 
-                card.transform.up = -(handPosition + offset - selectedTarget.position).normalized;
             // start coroutine to float to float position
             StartCoroutine(FloatToPosition(card, handPosition + offset));
+            // if selected target is not null, point towards selected target
+            if (selectedTarget == null) return;
+            card.transform.rotation = Quaternion.LookRotation(handRotation * Vector3.forward, 
+                (handPosition + offset - selectedTarget.position).normalized);
         }
 
         IEnumerator FloatToPosition(CardObject card, Vector3 targetPos)
