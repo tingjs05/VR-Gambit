@@ -3017,6 +3017,7 @@ MonoBehaviour:
   windUpTransitionDuration: 0.5
   windUpReleaseWindow: 0.25
   releaseDistanceScale: 0.25
+  selectedTargetDistanceScale: 0.05
   cardPlacementOffset: {x: 0.1, y: 0.1, z: 0}
   cardChargeDuration: 2.5
   placeCardTilt: {x: -80, y: 0, z: 0}

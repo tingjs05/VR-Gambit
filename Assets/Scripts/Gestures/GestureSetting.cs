@@ -13,6 +13,7 @@ namespace Gestures
         [Header("Basic Card Throw Settings")]
         [SerializeField] float windUpReleaseWindow = 2f;
         [SerializeField] float releaseDistanceScale = 0.15f;
+        [SerializeField] float selectedTargetDistanceScale = 0.01f;
 
         [Header("Card Placement Settings")]
         [SerializeField] Vector3 cardPlacementOffset;
@@ -41,6 +42,7 @@ namespace Gestures
         // basic card throw settings
         public float wind_up_release_window => windUpReleaseWindow;
         public float release_distance_scale => releaseDistanceScale;
+        public float selected_target_distance_scale => selectedTargetDistanceScale;
 
         // card placement settings
         public Vector3 card_placement_offset => cardPlacementOffset;

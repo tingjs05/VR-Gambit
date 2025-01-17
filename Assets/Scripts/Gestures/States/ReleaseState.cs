@@ -16,7 +16,7 @@ namespace Gestures
             // calculate throw speed
             float throwSpeed = (Vector3.Distance(character.hand_position, character.WindUp.wind_up_position) + 
                 // add distance of selected target (if available) to distance travelled
-                (character.TwoFinger.SelectedTarget == null ? 0f : (character.gestureSettings.release_distance_scale * 
+                (character.TwoFinger.SelectedTarget == null ? 0f : (character.gestureSettings.selected_target_distance_scale * 
                 Vector3.Distance(character.hand_position, character.TwoFinger.SelectedTarget.position)))) *
                 // divide by duration in state to find speed
                 character.gestureSettings.release_distance_scale / character.WindUp.duration_in_state;
