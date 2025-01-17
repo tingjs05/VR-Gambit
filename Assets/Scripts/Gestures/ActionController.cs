@@ -140,7 +140,7 @@ namespace Gestures
             if (Vector3.Distance(TwoFinger.SelectedTarget.position, Camera.main.transform.position) <= 
                 gestureSettings.detection_range || Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
                 GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized)) >= 0 || 
-                Mathf.Abs(Vector3.Angle(GetHorizontalVector((hand_position - Camera.main.transform.forward).normalized), 
+                Mathf.Abs(Vector3.Angle(GetHorizontalVector(Camera.main.transform.forward), 
                 GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized))) >= 
                 gestureSettings.max_angle)
                     return;
