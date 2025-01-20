@@ -615,10 +615,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card_Effects
       objectReference: {fileID: 0}
+    - target: {fileID: 5568590405096735529, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5828129476744832778, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
@@ -637,7 +647,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
+      propertyPath: NoiseModule.damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: NoiseModule.octaves
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: NoiseModule.quality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
       propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: NoiseModule.frequency
+      value: 12.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: ShapeModule.arc.spread
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: VelocityModule.enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
@@ -647,8 +687,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
       propertyPath: TrailModule.textureScale.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
@@ -658,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: TrailModule.lifetime.scalar
-      value: 0.4
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
@@ -673,12 +718,27 @@ PrefabInstance:
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: InitialModule.maxNumParticles
-      value: 400
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: NoiseModule.scrollSpeed.scalar
-      value: 1
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: TrailModule.sizeAffectsLifetime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
@@ -688,7 +748,12 @@ PrefabInstance:
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 50
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5940020558937671848, guid: b6974ae86715e29489b239d948fca517,
         type: 3}
