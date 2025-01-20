@@ -35,6 +35,8 @@ namespace Gestures
         public TwoFingerState TwoFinger { get; private set; }
         public SnapState Snap { get; private set; }
         public PlaceState Place { get; private set; }
+        public StaffSpawnState StaffSpawn { get; private set; }
+        public ShieldState Shield { get; private set; }
         #endregion
 
         #region Hand Management
@@ -63,6 +65,8 @@ namespace Gestures
             Snap = new SnapState(this, this);
             Place = new PlaceState(this, this);
             TwoFinger = new TwoFingerState(this, this);
+            Shield = new ShieldState(this, this);
+            StaffSpawn = new StaffSpawnState(this, this);
             Initialize(Default);
         }
 

@@ -18,8 +18,15 @@ namespace Gestures
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (!character.gestureManager.Gestures["Two Finger"]) return;
-            fsm.SwitchState(character.TwoFinger);
+
+            if (character.gestureManager.Gestures["Two Finger"])
+            {
+                fsm.SwitchState(character.TwoFinger);
+                return;
+            }
+            
+            if (!character.StaffSpawn.EnterCondition) return;
+            fsm.SwitchState(character.StaffSpawn);
         }
     }
 }

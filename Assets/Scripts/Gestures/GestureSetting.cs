@@ -21,6 +21,12 @@ namespace Gestures
         [Header("Card Charging")]
         [SerializeField] float cardChargeDuration = 5f;
 
+        [Header("Staff Spawn")]
+        [SerializeField] float handsTogetherDistance = 0.05f;
+        [SerializeField] float minHandsSeperateDistance = 0.1f;
+        [SerializeField] float minHandsMoveDistance = 0.05f;
+        [SerializeField] float handsToHorAxisThreshold = 0.8f;
+
         [Header("Finger Card")]
         [SerializeField] Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
         [SerializeField] Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
@@ -49,6 +55,12 @@ namespace Gestures
 
         // card charging
         public float card_charge_duration => cardChargeDuration;
+
+        // staff spawn
+        public float hands_together_distance => handsTogetherDistance;
+        public float min_hands_seperate_distance => minHandsSeperateDistance;
+        public float min_hands_move_distance => minHandsMoveDistance;
+        public float hands_to_hor_axis_threshold => handsToHorAxisThreshold;
 
         // finger card
         public Vector3 place_card_tilt => placeCardTilt;
