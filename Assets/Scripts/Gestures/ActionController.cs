@@ -11,6 +11,7 @@ namespace Gestures
     public class ActionController : StateMachine<ActionController>
     {
         public GestureManager gestureManager;
+        public TwoHandedGestureManager twoHandedGestureManager;
         public GestureSetting gestureSettings;
         public ActionController otherHand;
         public bool isRightHand = true;

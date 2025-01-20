@@ -613,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_state_name: None
   gestureManager: {fileID: 444914739}
+  twoHandedGestureManager: {fileID: 1920391406}
   gestureSettings: {fileID: 1920391405}
   otherHand: {fileID: 484685121}
   isRightHand: 0
@@ -953,6 +954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   current_state_name: None
   gestureManager: {fileID: 484685122}
+  twoHandedGestureManager: {fileID: 1920391406}
   gestureSettings: {fileID: 1920391405}
   otherHand: {fileID: 444914738}
   isRightHand: 1
