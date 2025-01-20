@@ -5,7 +5,11 @@ namespace Gestures
 {
     public class TwoFingerState : ComboGestureState<ActionController>
     {
+        // charged shot
         public bool ChargedShot => character.sliderUI.value >= 1f;
+        // audo aim
+        public Transform SelectedTarget = null;
+        private Collider[] cols;
 
         public TwoFingerState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, character.WindUp, 
@@ -25,11 +29,16 @@ namespace Gestures
             // show UI to indicate charge
             character.sliderUI.gameObject.SetActive(true);
             character.sliderUI.value = 0f;
+            // reset selected target from auto aim
+            SelectedTarget = null;
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            // check for auto aim targets and set indicator
+            character.autoAimIndicator.gameObject.SetActive(AutoAim());
+            // update charging UI
             character.sliderUI.value = (character.sliderUI.maxValue * character.sliderUI.value) + Time.deltaTime;
             //AudioManager.Instance.HandleChargingVolume(ChargedShot, character.sliderUI.value / character.sliderUI.maxValue, character.isRightHand);
             if (!ChargedShot || character.chargedFire.isPlaying) return;
@@ -60,6 +69,57 @@ namespace Gestures
             }
             
             return false;
+        }
+
+        bool AutoAim()
+        {
+            if (!character.gestureSettings.use_auto_aim) return false;
+
+            // detect targets
+            cols = Physics.OverlapSphere(Camera.main.transform.position, character.gestureSettings.detection_range, 
+                character.gestureSettings.target_mask);
+            // check if any targets are detected
+            if (cols == null || cols.Length <= 0) return false;
+
+            float currDot, selectedDot;
+
+            // filter out targets behind the player, then sort by distance and angle to direction player is pointing
+            // also filter out targets outside max angle
+            for (int i = 0; i < cols.Length; i++)
+            {
+                if (Vector3.Dot(character.GetHorizontalVector(Camera.main.transform.forward), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
+                    Mathf.Abs(Vector3.Angle(character.GetHorizontalVector(Camera.main.transform.forward), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) > 
+                    character.gestureSettings.max_angle)
+                        continue;
+                
+                // if selected target is null, set current collider as selected target
+                if (SelectedTarget == null)
+                {
+                    SelectedTarget = cols[i].transform;
+                    continue;
+                }
+
+                // calculate dot of direction of target to direction to hand
+                currDot = Vector3.Dot(character.GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized));
+                selectedDot = Vector3.Dot(character.GetHorizontalVector((character.hand_position - Camera.main.transform.position).normalized), 
+                    character.GetHorizontalVector((SelectedTarget.position - Camera.main.transform.position).normalized));
+
+                // if both dots are the same, check which is nearer
+                if (currDot == selectedDot && (
+                    Vector3.Distance(cols[i].transform.position, Camera.main.transform.position) >= 
+                    Vector3.Distance(SelectedTarget.position, Camera.main.transform.position)))
+                        continue;
+
+                // do not replace selected target if current one has a wider angle
+                if (currDot < selectedDot) continue;
+                // replace selected target
+                SelectedTarget = cols[i].transform;
+            }
+
+            return SelectedTarget != null;
         }
     }
 }

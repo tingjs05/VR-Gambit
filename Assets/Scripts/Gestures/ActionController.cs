@@ -19,6 +19,9 @@ namespace Gestures
         public ParticleSystem glow, fire, chargedFire, lightning;
         public BoxSlider sliderUI;
 
+        [Header("Auto Aim")]
+        public Transform autoAimIndicator;
+
         [Header("Action Managers")]
         public CardThrowing cardThrowingManager;
         public CardPlacement cardPlacementManager;
@@ -94,6 +97,8 @@ namespace Gestures
 
             // move objects according to hand position and rotation
             MoveFingerCard();
+            // verify selected target
+            CheckSelectedTarget();
         }
 
         void MoveFingerCard()
@@ -121,6 +126,27 @@ namespace Gestures
                 (rotateCardToFinger ? antiClipOffset : Vector3.zero), 
                 rotateCardToFinger ? Quaternion.LookRotation(indexDir, handRotation * Vector3.forward) : 
                 (handRotation * gestureSettings.card_rotation_offset));
+        }
+
+        void CheckSelectedTarget()
+        {
+            if (TwoFinger.SelectedTarget == null) return;
+
+            // update auto aim indicator position
+            if (autoAimIndicator != null)
+                autoAimIndicator.position = TwoFinger.SelectedTarget.position;
+
+            // check if selected target is still in front of player and within allowed angle
+            if (Vector3.Distance(TwoFinger.SelectedTarget.position, Camera.main.transform.position) <= 
+                gestureSettings.detection_range || Vector3.Dot(GetHorizontalVector(Camera.main.transform.forward), 
+                GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized)) >= 0 || 
+                Mathf.Abs(Vector3.Angle(GetHorizontalVector((TwoFinger.SelectedTarget.position - Camera.main.transform.position).normalized), 
+                GetHorizontalVector(Camera.main.transform.forward))) <= gestureSettings.max_angle)
+                    return;
+            
+            // reset selected target
+            TwoFinger.SelectedTarget = null;
+            autoAimIndicator.gameObject.SetActive(false);
         }
 
         public void ToggleChargedParticles(bool play)
@@ -151,6 +177,12 @@ namespace Gestures
 
             if (!overrideReleaseSFX) AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, isRightHand);
  
+        }
+
+        public Vector3 GetHorizontalVector(Vector3 vec)
+        {
+            vec.y = 0f;
+            return vec.normalized;
         }
     }
 }

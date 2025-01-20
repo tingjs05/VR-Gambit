@@ -13,18 +13,24 @@ namespace Gestures
         [Header("Basic Card Throw Settings")]
         [SerializeField] float windUpReleaseWindow = 2f;
         [SerializeField] float releaseDistanceScale = 0.15f;
+        [SerializeField] float selectedTargetDistanceScale = 0.01f;
 
         [Header("Card Placement Settings")]
         [SerializeField] Vector3 cardPlacementOffset;
+
+        [Header("Card Charging")]
+        [SerializeField] float cardChargeDuration = 5f;
 
         [Header("Finger Card")]
         [SerializeField] Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
         [SerializeField] Quaternion cardRotationOffset = Quaternion.Euler(82f, 0f, 0f);
         [SerializeField] float offsetFloat = 0.0325f;
 
-        [Header("Card Charging")]
-        [SerializeField] Vector3 sliderUIOffset = new Vector3(-0.08f, 0f, 0f);
-        [SerializeField] float cardChargeDuration = 5f;
+        [Header("Auto Aim")]
+        [SerializeField] private float detectionRange = 15f;
+        [SerializeField] private float maxAngle = 75f;
+        [SerializeField] private bool useAutoAim = true;
+        [SerializeField] private LayerMask targetMask;
         #endregion
 
         #region Public Properties
@@ -36,18 +42,24 @@ namespace Gestures
         // basic card throw settings
         public float wind_up_release_window => windUpReleaseWindow;
         public float release_distance_scale => releaseDistanceScale;
+        public float selected_target_distance_scale => selectedTargetDistanceScale;
 
         // card placement settings
         public Vector3 card_placement_offset => cardPlacementOffset;
+
+        // card charging
+        public float card_charge_duration => cardChargeDuration;
 
         // finger card
         public Vector3 place_card_tilt => placeCardTilt;
         public Quaternion card_rotation_offset => cardRotationOffset;
         public float offset_float => offsetFloat;
 
-        // card charging
-        public Vector3 slider_ui_offset => sliderUIOffset;
-        public float card_charge_duration => cardChargeDuration;
+        // auto aim
+        public float detection_range => detectionRange;
+        public float max_angle => maxAngle;
+        public bool use_auto_aim => useAutoAim;
+        public LayerMask target_mask => targetMask;
         #endregion
     }
 }
