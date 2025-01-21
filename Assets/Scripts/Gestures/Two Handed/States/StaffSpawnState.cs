@@ -56,11 +56,13 @@ namespace Gestures
                     return;
             
             prevHandDistance = handDistance;
-        }
 
-        public override void Exit()
-        {
-            base.Exit();
+            // check if required hand distance is met, only activate for right hand (it is the same)
+            if (!character.isRightHand || !NextStateCondition) return;
+            // generate staff
+            character.cardStaff.gameObject.SetActive(true);
+            character.cardStaff.GenerateStaff(prevHandDistance);
+            character.cardStaff.transform.position = (character.hand_position + character.otherHand.hand_position) / 2f;
         }
 
         protected override bool CheckTransition()

@@ -14,6 +14,7 @@ namespace Gestures
         public TwoHandedGestureManager twoHandedGestureManager;
         public GestureSetting gestureSettings;
         public ActionController otherHand;
+        public CardStaffManager cardStaff;
         public bool isRightHand = true;
 
         [Header("Finger Card")]

@@ -12,6 +12,7 @@ namespace Gestures
         {
             base.Enter();
             character.ToggleFingerCard(false);
+            character.cardStaff.gameObject.SetActive(false);
             character.autoAimIndicator.gameObject.SetActive(false);
         }
 
