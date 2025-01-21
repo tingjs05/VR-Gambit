@@ -41,28 +41,28 @@ namespace Gestures
             handDistance = Vector3.Distance(character.transform.position, character.otherHand.transform.position);
             dot = Vector3.Dot(Vector3.up, (character.transform.position - character.otherHand.transform.position).normalized);
             
-            // check if hands move closer, if so, cancel and return to default state
-            if (handDistance < prevHandDistance && 
-                prevHandDistance - handDistance > character.gestureSettings.min_hands_move_distance)
+            // ensure hands align with horizontal axis, if not, cancel and return to default state
+            if (dot > (1f - character.gestureSettings.hands_to_hor_axis_threshold) || 
+                dot < -(1f - character.gestureSettings.hands_to_hor_axis_threshold))
             {
                 fsm.SwitchState(character.Default);
                 return;
             }
 
-            // ensure hands are further away, and aligns with horizontal axis
-            if (handDistance <= prevHandDistance ||
-                dot > (1f - character.gestureSettings.hands_to_hor_axis_threshold) || 
-                dot < -(1f - character.gestureSettings.hands_to_hor_axis_threshold)) 
-                    return;
-            
             prevHandDistance = handDistance;
 
             // check if required hand distance is met, only activate for right hand (it is the same)
-            if (!character.isRightHand || !NextStateCondition) return;
+            if (!character.isRightHand || !NextStateCondition) 
+            {
+                character.cardStaff.gameObject.SetActive(false);
+                return;
+            }
+            
             // generate staff
             character.cardStaff.gameObject.SetActive(true);
             character.cardStaff.GenerateStaff(prevHandDistance);
             character.cardStaff.transform.position = (character.hand_position + character.otherHand.hand_position) / 2f;
+            character.cardStaff.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
         }
 
         protected override bool CheckTransition()

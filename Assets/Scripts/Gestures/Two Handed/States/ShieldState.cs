@@ -1,3 +1,4 @@
+using UnityEngine;
 using Patterns.FSM;
 
 namespace Gestures
@@ -14,6 +15,14 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
+        }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+            
+            character.cardStaff.transform.position = (character.hand_position + character.otherHand.hand_position) / 2f;
+            character.cardStaff.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
         }
     }
 }
