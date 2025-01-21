@@ -4673,8 +4673,8 @@ MonoBehaviour:
   selectedTargetDistanceScale: 0.05
   cardPlacementOffset: {x: 0.1, y: 0.1, z: 0}
   cardChargeDuration: 2.5
-  handsTogetherDistance: 0.05
-  minHandsSeperateDistance: 0.1
+  handsTogetherDistance: 0.15
+  minHandsSeperateDistance: 0.2
   handsToHorAxisThreshold: 0.8
   placeCardTilt: {x: -80, y: 0, z: 0}
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
