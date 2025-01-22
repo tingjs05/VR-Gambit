@@ -25,7 +25,7 @@ namespace Gestures
         [Header("Staff Spawn")]
         [SerializeField] float handsTogetherDistance = 0.05f;
         [SerializeField] float minHandsSeperateDistance = 0.1f;
-        [SerializeField] float handsToHorAxisThreshold = 0.8f;
+        [SerializeField, Range(0f, 1f)] float handsToHorAxisThreshold = 0.8f;
 
         [Header("Finger Card")]
         [SerializeField] Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);

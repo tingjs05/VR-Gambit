@@ -183,7 +183,6 @@ namespace Gestures
             }
 
             if (!overrideReleaseSFX) AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_ReleaseCard, isRightHand);
- 
         }
 
         public Vector3 GetHorizontalVector(Vector3 vec)

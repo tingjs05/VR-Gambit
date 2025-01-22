@@ -31,6 +31,12 @@ namespace Gestures
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_HoldCard, character.isRightHand);
+        }
+
         public override void LogicUpdate()
         {
             handDistace = Vector3.Distance(character.hand_position, character.otherHand.hand_position);
