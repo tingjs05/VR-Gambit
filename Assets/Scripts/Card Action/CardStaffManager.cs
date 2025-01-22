@@ -47,7 +47,7 @@ namespace Card
             }
 
             cardChildPool.Add(Instantiate(cardPrefab, transform));
-            cardChildPool[^1].transform.rotation = Quaternion.Euler(rotation);
+            cardChildPool[^1].transform.localRotation = Quaternion.Euler(rotation);
             return cardChildPool[^1];
         }
     }
