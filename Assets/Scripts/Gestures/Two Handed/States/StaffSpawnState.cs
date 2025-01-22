@@ -7,13 +7,13 @@ namespace Gestures
     {
         float handDistace = 0f;
 
-        public bool EnterCondition => character.twoHandedGestureManager.Gestures["Hands Up"].active;// && IsLinedUp && HandInPlace;
+        public bool EnterCondition => character.twoHandedGestureManager.Gestures["Hands Up"].active && IsLinedUp && HandInPlace;
         public bool NextStateCondition => handDistace >= character.gestureSettings.min_hands_seperate_distance;
 
         bool IsLinedUp => 
-            Vector3.Dot(Vector3.up, (character.transform.position - character.otherHand.transform.position).normalized) > 
-            (1f - character.gestureSettings.hands_to_hor_axis_threshold) || 
-            Vector3.Dot(Vector3.up, (character.transform.position - character.otherHand.transform.position).normalized) < 
+            Vector3.Dot(Vector3.up, (character.hand_position - character.otherHand.hand_position).normalized) <= 
+            (1f - character.gestureSettings.hands_to_hor_axis_threshold) && 
+            Vector3.Dot(Vector3.up, (character.hand_position - character.otherHand.hand_position).normalized) >= 
             -(1f - character.gestureSettings.hands_to_hor_axis_threshold);
         
         bool HandInPlace =>
@@ -24,21 +24,16 @@ namespace Gestures
 
         public StaffSpawnState(StateMachine<ActionController> fsm, ActionController character) : 
             base(fsm, character, character.Default, character.Shield, 
-            () => character.twoHandedGestureManager.Gestures["Hands Up"].active, 
-            () => character.StaffSpawn.NextStateCondition && character.Shield.EnterCondition, 
+            () => character.StaffSpawn.EnterCondition, 
+            () => !character.StaffSpawn.EnterCondition && character.StaffSpawn.NextStateCondition && 
+                character.Shield.EnterCondition, 
             character.gestureSettings.card_staff_transition_duration)
         {
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-            handDistace = Vector3.Distance(character.transform.position, character.otherHand.transform.position);
-        }
-
         public override void LogicUpdate()
         {
-            handDistace = Vector3.Distance(character.transform.position, character.otherHand.transform.position);
+            handDistace = Vector3.Distance(character.hand_position, character.otherHand.hand_position);
 
             base.LogicUpdate();
 
