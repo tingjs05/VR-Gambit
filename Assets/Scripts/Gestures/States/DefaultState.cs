@@ -27,7 +27,7 @@ namespace Gestures
                 return;
             }
             
-            if (!character.StaffSpawn.EnterCondition || 
+            if (character.otherHand.currentState != character.otherHand.Default || !character.StaffSpawn.EnterCondition || 
                 Vector3.Distance(character.transform.position, character.otherHand.transform.position) > 
                 character.gestureSettings.hands_together_distance)
                     return;

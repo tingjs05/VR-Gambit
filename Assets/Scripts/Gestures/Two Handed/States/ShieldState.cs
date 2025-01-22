@@ -16,17 +16,21 @@ namespace Gestures
         {
         }
 
-        public override void Enter()
-        {
-            base.Enter();
-        }
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            
+            // ensure staff is active
+            if (!character.cardStaff.gameObject.activeSelf) character.cardStaff.gameObject.SetActive(true);
+            // set card staff position
             character.cardStaff.transform.position = character.hand_position;
             character.cardStaff.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            // ensure staff is inactive when exitting
+            character.cardStaff.gameObject.SetActive(false);
         }
     }
 }
