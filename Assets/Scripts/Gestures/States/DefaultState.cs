@@ -1,3 +1,4 @@
+using UnityEngine;
 using Patterns.FSM;
 
 namespace Gestures
@@ -26,7 +27,11 @@ namespace Gestures
                 return;
             }
             
-            if (!character.StaffSpawn.EnterCondition) return;
+            if (!character.StaffSpawn.EnterCondition || 
+                Vector3.Distance(character.transform.position, character.otherHand.transform.position) > 
+                character.gestureSettings.hands_together_distance)
+                    return;
+            
             fsm.SwitchState(character.StaffSpawn);
         }
     }

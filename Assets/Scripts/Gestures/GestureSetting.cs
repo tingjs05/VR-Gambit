@@ -9,6 +9,7 @@ namespace Gestures
         [SerializeField] float defaultTransitionDuration = 0.25f;
         [SerializeField] float placeTransitionDuration = 0.5f;
         [SerializeField] float windUpTransitionDuration = 0.5f;
+        [SerializeField] float cardStaffTransitionDuration = 0.5f;
 
         [Header("Basic Card Throw Settings")]
         [SerializeField] float windUpReleaseWindow = 2f;
@@ -43,6 +44,7 @@ namespace Gestures
         public float default_transition_duration => defaultTransitionDuration;
         public float place_transition_duration => placeTransitionDuration;
         public float wind_up_transition_duration => windUpTransitionDuration;
+        public float card_staff_transition_duration => cardStaffTransitionDuration;
 
         // basic card throw settings
         public float wind_up_release_window => windUpReleaseWindow;

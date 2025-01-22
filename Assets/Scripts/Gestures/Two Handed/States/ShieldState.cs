@@ -5,10 +5,12 @@ namespace Gestures
 {
     public class ShieldState : GestureState<ActionController>
     {
+        public bool EnterCondition => 
+            (character.isRightHand && character.twoHandedGestureManager.Gestures["Hands Up"].rightHand) || 
+            (!character.isRightHand && character.twoHandedGestureManager.Gestures["Hands Up"].leftHand);
+        
         public ShieldState(StateMachine<ActionController> fsm, ActionController character) : 
-            base(fsm, character, character.Default, () => 
-                (character.isRightHand && character.twoHandedGestureManager.Gestures["Hands Up"].rightHand) || 
-                (!character.isRightHand && character.twoHandedGestureManager.Gestures["Hands Up"].leftHand))
+            base(fsm, character, character.Default, () => character.Shield.EnterCondition)
         {
         }
 
@@ -21,7 +23,7 @@ namespace Gestures
         {
             base.LogicUpdate();
             
-            character.cardStaff.transform.position = (character.hand_position + character.otherHand.hand_position) / 2f;
+            character.cardStaff.transform.position = character.hand_position;
             character.cardStaff.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward, Camera.main.transform.up);
         }
     }
