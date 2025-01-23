@@ -94,8 +94,8 @@ namespace Gestures
                     character.gestureSettings.max_angle)
                         continue;
                 
-                // if selected target is null, set current collider as selected target
-                if (SelectedTarget == null)
+                // if first target, reset and set current collider as selected target
+                if (i == 0)
                 {
                     SelectedTarget = cols[i].transform;
                     continue;
