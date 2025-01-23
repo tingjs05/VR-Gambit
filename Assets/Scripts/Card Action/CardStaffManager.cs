@@ -8,6 +8,7 @@ namespace Card
     {
         public float defaultColliderSize = 0.1f;
         public float frequency = 0.1f;
+        public float maxLength = 1.5f;
         public Vector3 rotation = new Vector3(-90f, -90f, 0f);
         public GameObject cardPrefab;
 
@@ -21,6 +22,9 @@ namespace Card
 
         public void GenerateStaff(float length)
         {
+            // check max length, ensure within range
+            if (length > maxLength) length = maxLength;
+
             // hide all cards
             foreach (GameObject card in cardChildPool)
                 card.SetActive(false);

@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultColliderSize: 0.1
-  frequency: 0.03
+  frequency: 0.05
+  maxLength: 1.5
   rotation: {x: -90, y: -90, z: 0}
   cardPrefab: {fileID: 7053288889414828550, guid: 3f4486adff3faaa4b9a4c3d669a5435f,
     type: 3}
