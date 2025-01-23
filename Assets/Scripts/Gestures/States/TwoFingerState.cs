@@ -87,15 +87,13 @@ namespace Gestures
             // also filter out targets outside max angle
             for (int i = 0; i < cols.Length; i++)
             {
-                if (Vector3.Dot(character.GetHorizontalVector(Camera.main.transform.forward), 
-                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized)) < 0 || 
-                    Mathf.Abs(Vector3.Angle(character.GetHorizontalVector(Camera.main.transform.forward), 
-                    character.GetHorizontalVector((cols[i].transform.position - Camera.main.transform.position).normalized))) > 
-                    character.gestureSettings.max_angle)
-                        continue;
+                // ensure target is within valid range
+                if (!VerifyTarget(cols[i].transform))
+                    continue;
                 
-                // if first target, reset and set current collider as selected target
-                if (i == 0)
+                // if selected target is null, set current collider as selected target
+                // or if current selected target is out of valid range
+                if (SelectedTarget == null || !VerifyTarget(SelectedTarget))
                 {
                     SelectedTarget = cols[i].transform;
                     continue;
@@ -120,6 +118,17 @@ namespace Gestures
             }
 
             return SelectedTarget != null;
+        }
+
+        bool VerifyTarget(Transform trans)
+        {
+            // ensure transform is not behind self
+            return Vector3.Dot(character.GetHorizontalVector(Camera.main.transform.forward), 
+                character.GetHorizontalVector((trans.position - Camera.main.transform.position).normalized)) >= 0 &&
+                // ensure within max angle with forward vector
+                Mathf.Abs(Vector3.Angle(character.GetHorizontalVector(Camera.main.transform.forward), 
+                character.GetHorizontalVector((trans.position - Camera.main.transform.position).normalized))) <= 
+                character.gestureSettings.max_angle;
         }
     }
 }
