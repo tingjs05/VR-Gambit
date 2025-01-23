@@ -4675,13 +4675,13 @@ MonoBehaviour:
   cardPlacementOffset: {x: 0.1, y: 0.1, z: 0}
   cardChargeDuration: 2.5
   handsTogetherDistance: 0.2
-  minHandsSeperateDistance: 0
+  minHandsSeperateDistance: 0.15
   handsToHorAxisThreshold: 0.8
   placeCardTilt: {x: -80, y: 0, z: 0}
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
   offsetFloat: 0.0325
   detectionRange: 25
-  maxAngle: 75
+  maxAngle: 60
   useAutoAim: 1
   targetMask:
     serializedVersion: 2

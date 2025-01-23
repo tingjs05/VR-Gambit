@@ -13,8 +13,10 @@ namespace Gestures
         {
             base.Enter();
             character.ToggleFingerCard(false);
-            character.cardStaff.gameObject.SetActive(false);
             character.autoAimIndicator.gameObject.SetActive(false);
+            // do not deactivate staff if other hand is using it
+            if (character.otherHand.currentState == character.otherHand.Shield) return;
+            character.cardStaff.gameObject.SetActive(false);
         }
 
         public override void LogicUpdate()

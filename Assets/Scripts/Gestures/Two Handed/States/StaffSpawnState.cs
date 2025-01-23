@@ -34,7 +34,15 @@ namespace Gestures
         public override void Enter()
         {
             base.Enter();
+            // play sfx for bringing out staff
             AudioManager.Instance.PlaySFX(AudioManager.Instance.cardSFX.cardIdle_HoldCard, character.isRightHand);
+            // reset staff
+            character.cardStaff.gameObject.SetActive(false);
+            character.cardStaff.GenerateStaff(0f);
+            character.cardStaff.transform.position = (character.hand_position + character.otherHand.hand_position) / 2f;
+            character.cardStaff.transform.rotation = Quaternion.LookRotation(
+                Vector3.Cross((character.hand_position - character.otherHand.hand_position).normalized, Camera.main.transform.up), 
+                Camera.main.transform.up);
         }
 
         public override void LogicUpdate()
