@@ -24,8 +24,10 @@ namespace Gestures
 
         [Header("Staff Spawn")]
         [SerializeField] float handsTogetherDistance = 0.05f;
-        [SerializeField] float minHandsSeperateDistance = 0.1f;
         [SerializeField, Range(0f, 1f)] float handsToHorAxisThreshold = 0.8f;
+
+        [Header("Staff Shield")]
+        [SerializeField] float shieldRotationSpeed = 95f;
 
         [Header("Finger Card")]
         [SerializeField] Vector3 placeCardTilt = new Vector3(-80f, 0f, 0f);
@@ -59,8 +61,10 @@ namespace Gestures
 
         // staff spawn
         public float hands_together_distance => handsTogetherDistance;
-        public float min_hands_seperate_distance => minHandsSeperateDistance;
         public float hands_to_hor_axis_threshold => handsToHorAxisThreshold;
+
+        // staff shield
+        public float shield_rotation_speed => shieldRotationSpeed;
 
         // finger card
         public Vector3 place_card_tilt => placeCardTilt;

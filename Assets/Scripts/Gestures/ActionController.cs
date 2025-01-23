@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
+using TMPro;
 using Patterns.FSM;
 using Card;
 using UI;
@@ -15,6 +16,7 @@ namespace Gestures
         public GestureSetting gestureSettings;
         public ActionController otherHand;
         public CardStaffManager cardStaff;
+        public TextMeshProUGUI debugText;
         public bool isRightHand = true;
 
         [Header("Finger Card")]
@@ -93,6 +95,9 @@ namespace Gestures
         new void Update()
         {
             base.Update();
+            
+            // show current state on debug text
+            if (debugText != null) debugText.text = current_state_name;
 
             // Update hand position and rotation
             if (!handDevice.isValid) return;

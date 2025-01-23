@@ -37,6 +37,11 @@ namespace Card
             }
         }
 
+        public void ActivateShield()
+        {
+            col.size = new Vector3(col.size.x, col.size.x, col.size.z);
+        }
+
         public GameObject GetCard()
         {
             foreach (GameObject card in cardChildPool)

@@ -16,15 +16,21 @@ namespace Gestures
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            character.cardStaff.ActivateShield();
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
             // set card staff position
-            character.cardStaff.transform.position = character.hand_position;
+            character.cardStaff.transform.position = character.transform.position;
             character.cardStaff.transform.rotation = Quaternion.LookRotation(
-                // Quaternion.AngleAxis(15f * (character.isRightHand ? 1f : -1f), Camera.main.transform.up) * 
-                Camera.main.transform.forward, 
-                Camera.main.transform.up);
+                // Quaternion.AngleAxis(character.gestureSettings.shield_rotation_speed * Time.deltaTime * 
+                // (character.isRightHand ? 1f : -1f), Camera.main.transform.up) * 
+                Camera.main.transform.forward, Camera.main.transform.up);
         }
     }
 }
