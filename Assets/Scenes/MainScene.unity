@@ -5129,8 +5129,8 @@ MonoBehaviour:
   placeCardTilt: {x: -80, y: 0, z: 0}
   cardRotationOffset: {x: 0.656059, y: 0, z: 0, w: 0.7547096}
   offsetFloat: 0.0325
-  detectionRange: 25
-  maxAngle: 50
+  detectionRange: 18.5
+  maxAngle: 35
   useAutoAim: 1
   targetMask:
     serializedVersion: 2

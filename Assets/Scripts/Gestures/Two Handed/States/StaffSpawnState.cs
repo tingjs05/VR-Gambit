@@ -66,7 +66,7 @@ namespace Gestures
         protected override bool CheckTransition()
         {
             // unless longer than transition duration, cannot transition to next state
-            if (timeInState < character.gestureSettings.card_staff_transition_duration)
+            if (timeInState < character.gestureSettings.card_staff_transition_duration || character.cardStaff.cardChildPool.Count < 5)
                 return false;
 
             if (character.Shield.EnterCondition)

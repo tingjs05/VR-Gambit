@@ -20,16 +20,18 @@ namespace Gestures
                 Vector3.Distance(character.hand_position, character.TwoFinger.SelectedTarget.position)))) *
                 // divide by duration in state to find speed
                 character.gestureSettings.release_distance_scale / character.WindUp.duration_in_state;
+
             // throw card
             character.cardThrowingManager.ThrowCard(
-                // check if there is a selected target to aim towards
-                character.TwoFinger.SelectedTarget != null ? 
+                // check if there is a selected target to aim towards, detect if card is currently charged
+                (character.TwoFinger.SelectedTarget != null && !character.TwoFinger.ChargedShot) ? 
                 // if so, shoot card towards aimed target
                 (character.TwoFinger.SelectedTarget.position - character.transform.position).normalized : 
                 // otherwise take direction depending on hand
                 ((character.isRightHand ? character.transform.right : -character.transform.right) - character.transform.up).normalized, 
                 // pass in other values to instsantiate and launch card
                 character.hand_position, character.hand_rotation, throwSpeed, character.TwoFinger.ChargedShot, character.isRightHand);
+
             // throw sfx
             AudioManager.Instance.PlayVariedSFX(character.TwoFinger.ChargedShot ? 
                 AudioManager.Instance.cardSFX.cardThrow_Charged : AudioManager.Instance.cardSFX.cardThrow_Normal, 

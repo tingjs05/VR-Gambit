@@ -9,10 +9,11 @@ namespace Card
         public float defaultColliderSize = 0.1f;
         public float frequency = 0.1f;
         public float maxLength = 1.5f;
+        public int minLength = 3;
         public Vector3 rotation = new Vector3(-90f, -90f, 0f);
         public GameObject cardPrefab;
 
-        List<GameObject> cardChildPool = new List<GameObject>();
+        public List<GameObject> cardChildPool = new List<GameObject>();
         BoxCollider col;
 
         void Awake()
@@ -24,6 +25,7 @@ namespace Card
         {
             // check max length, ensure within range
             if (length > maxLength) length = maxLength;
+
 
             // hide all cards
             foreach (GameObject card in cardChildPool)
